@@ -1,0 +1,31 @@
+// Variables
+$primary: #ffb400;
+$dark: #111111;
+$react: #61dafb;
+$vue: #41b883;
+$light-gray: #bdbdbd;
+$dark-gray: #242424;
+// Overriding Bootstrap Variables
+$theme-colors: (
+  "primary": $primary,
+  "dark": $dark,
+  "react": $react,
+  "vue": $vue,
+  "light-gray": $light-gray,
+  "dark-gray": $dark-gray,
+);
+// Bootstrap
+@import "bootstrap";
+
+// Globals
+a {
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+}

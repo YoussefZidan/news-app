@@ -1,7 +1,7 @@
 import React from "react";
-
+import "./App.scss";
 const App = () => {
-  return <p>app works</p>;
+  return <p className="bg-success">app works</p>;
 };
 
 export default App;
