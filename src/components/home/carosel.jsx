@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { spaces } from "./../../utility/constants";
 import {
   Carousel,
   CarouselItem,
@@ -99,6 +100,7 @@ const Carosel = () => {
       </CarouselItem>
     );
   });
+
   return (
     <Carousel activeIndex={activeIndex} next={next} previous={previous}>
       <CarouselIndicators

@@ -1,9 +1,11 @@
 // Variables
+$primary: #058997;
 $dark: #111111;
 $light-gray: #bdbdbd;
 $dark-gray: #242424;
 // Overriding Bootstrap Variables
 $theme-colors: (
+  "primary": $primary,
   "dark": $dark,
   "light-gray": $light-gray,
   "dark-gray": $dark-gray,
@@ -13,8 +15,8 @@ $theme-colors: (
 
 // Globals
 a {
+  color: inherit;
   text-decoration: none;
-
   &:focus,
   &:hover,
   &:visited,
