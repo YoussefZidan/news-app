@@ -55,3 +55,45 @@ a {
 // 4K
 @media (min-width: 1441px) and (max-width: 2560px) {
 }
+
+li {
+  list-style: none;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    .label {
+      opacity: 1;
+      left: 0;
+      width: 100%;
+    }
+  }
+  .label {
+    opacity: 1;
+    padding: 13px 35px 13px 16px;
+    left: 0;
+    position: relative;
+    z-index: -999;
+    width: 100%;
+    border-radius: 0.3rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+}
+.nav-active {
+  .label {
+    background-color: $primary;
+    color: $dark;
+  }
+}
+
+.active {
+  background-color: $primary;
+}
+.inactive {
+  background-color: $light-gray;
+  color: $white;
+}
