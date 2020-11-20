@@ -1,16 +1,10 @@
 // Variables
-$primary: #ffb400;
 $dark: #111111;
-$react: #61dafb;
-$vue: #41b883;
 $light-gray: #bdbdbd;
 $dark-gray: #242424;
 // Overriding Bootstrap Variables
 $theme-colors: (
-  "primary": $primary,
   "dark": $dark,
-  "react": $react,
-  "vue": $vue,
   "light-gray": $light-gray,
   "dark-gray": $dark-gray,
 );
@@ -28,4 +22,30 @@ a {
   &:active {
     text-decoration: none;
   }
+}
+.darkened-image {
+  filter: brightness(50%);
+}
+
+@import "./assets/scss/carosel.scss";
+
+// JUST FOR REFERENCE
+// Mobile
+@media (min-width: 320px) and (max-width: 425px) {
+}
+
+// Tablet
+@media (min-width: 426px) and (max-width: 768px) {
+}
+
+// Small Laptop
+@media (min-width: 769px) and (max-width: 1024px) {
+}
+
+// Large Laptop
+@media (min-width: 1025px) and (max-width: 1440px) {
+}
+
+// 4K
+@media (min-width: 1441px) and (max-width: 2560px) {
 }
