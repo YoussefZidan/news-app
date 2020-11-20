@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
+import { Navbar, Nav } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/imgs/logo.png";
 import avatar from "../assets/imgs/avatar.png";
@@ -19,17 +19,15 @@ const NavBar = () => {
     <React.Fragment>
       {/* navbar height space gap */}
       <div style={style}></div>
-      <Navbar color="primary" expand="md" className="py-3 fixed-top">
+      <Navbar style={style} color="primary" expand="md" className="fixed-top">
         <div className="container">
-          <NavbarBrand to="/">
-            <NavLink to="/">
-              <img src={logo} alt="Logo" width="60vw" />
-            </NavLink>
-          </NavbarBrand>
+          <NavLink to="/">
+            <img src={logo} alt="Logo" width="60vw" />
+          </NavLink>
           <Nav className="ml-auto" navbar>
-            <NavItem>
+            <NavLink to="/">
               <img src={avatar} alt="User" width="40vw" />
-            </NavItem>
+            </NavLink>
           </Nav>
         </div>
       </Navbar>

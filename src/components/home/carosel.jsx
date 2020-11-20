@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { spaces } from "./../../utility/constants";
+import { randomNumber } from "./../../utility/commonFunctions";
 import {
   Carousel,
   CarouselItem,
@@ -11,6 +11,7 @@ import {
 
 const items = [
   {
+    id: randomNumber(),
     src: "https://picsum.photos/1600/600",
     altText: "Slide 1",
     captionHeader: <span className="d-block mb-5">AI Foundation</span>,
@@ -26,6 +27,7 @@ const items = [
     ),
   },
   {
+    id: randomNumber(),
     src: "https://picsum.photos/1600/600",
     altText: "Slide 2",
     captionHeader: <span className="d-block mb-5">AI Foundation</span>,
@@ -41,6 +43,7 @@ const items = [
     ),
   },
   {
+    id: randomNumber(),
     src: "https://picsum.photos/1600/600",
     altText: "Slide 3",
     captionHeader: <span className="d-block mb-5">AI Foundation</span>,
@@ -86,7 +89,7 @@ const Carosel = () => {
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
-        key={item.src}>
+        key={item.id}>
         <CarouselCaption
           captionText={item.captionText}
           captionHeader={item.captionHeader}
