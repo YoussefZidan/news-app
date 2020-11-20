@@ -16,6 +16,7 @@ const LatestNews = () => {
                   cardSubTitle={truncate(ele.title, 40)}
                   cardImg={{ src: ele.urlToImage }}
                   cardText={ele.description}
+                  publishedAt={ele.publishedAt}
                 />
               </Col>
             )

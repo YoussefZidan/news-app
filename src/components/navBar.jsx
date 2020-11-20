@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/imgs/logo.png";
 import avatar from "../assets/imgs/avatar.png";
 import { spaces } from "./../utility/constants";
+import * as Icon from "react-feather";
 
 /**
  * NavBar Component
@@ -21,6 +22,7 @@ const NavBar = () => {
       <div style={style}></div>
       <Navbar style={style} color="primary" expand="md" className="fixed-top">
         <div className="container">
+          <Icon.AlignLeft className="text-white mr-3" size={38}/>
           <NavLink to="/">
             <img src={logo} alt="Logo" width="60vw" />
           </NavLink>
