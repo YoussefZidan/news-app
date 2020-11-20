@@ -29,6 +29,10 @@ a {
   filter: brightness(50%);
 }
 
+.object-fit {
+  object-fit: cover;
+}
+
 @import "./assets/scss/carosel.scss";
 
 // JUST FOR REFERENCE
