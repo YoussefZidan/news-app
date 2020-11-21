@@ -3,7 +3,7 @@
     font-size: 4.5vw;
   }
   p {
-    font-size: 1.1vw;
+    font-size: 1.3vw;
   }
   button {
     font-size: 1.1vw;
@@ -14,22 +14,22 @@
 
   // Tablet
   @media (min-width: 426px) and (max-width: 768px) {
-    bottom: 15%;
+    bottom: 20%;
   }
 
   // Small Laptop
   @media (min-width: 769px) and (max-width: 1024px) {
-    bottom: 20%;
+    bottom: 25%;
   }
 
   // Large Laptop
   @media (min-width: 1025px) and (max-width: 1440px) {
-    bottom: 25%;
+    bottom: 30%;
   }
 
   // 4K
   @media (min-width: 1441px) and (max-width: 2560px) {
-    bottom: 30%;
+    bottom: 35%;
   }
 }
 

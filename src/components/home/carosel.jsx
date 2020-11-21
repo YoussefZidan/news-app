@@ -8,11 +8,14 @@ import {
   CarouselCaption,
   Button,
 } from "reactstrap";
+import slide1 from "../../assets/imgs/slide1.jpg";
+import slide2 from "../../assets/imgs/slide2.jpg";
+import slide3 from "../../assets/imgs/slide3.jpg";
 
 const items = [
   {
     id: randomNumber(),
-    src: "https://picsum.photos/1600/600",
+    src: slide1,
     altText: "Slide 1",
     captionHeader: <span className="d-block mb-5">AI Foundation</span>,
     captionText: (
@@ -28,7 +31,7 @@ const items = [
   },
   {
     id: randomNumber(),
-    src: "https://picsum.photos/1600/600",
+    src: slide2,
     altText: "Slide 2",
     captionHeader: <span className="d-block mb-5">AI Foundation</span>,
     captionText: (
@@ -44,7 +47,7 @@ const items = [
   },
   {
     id: randomNumber(),
-    src: "https://picsum.photos/1600/600",
+    src: slide3,
     altText: "Slide 3",
     captionHeader: <span className="d-block mb-5">AI Foundation</span>,
     captionText: (
