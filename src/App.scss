@@ -1,7 +1,7 @@
 // Variables
 $primary: #058997;
 $dark: #111111;
-$light-gray: #bdbdbd;
+$light-gray: #ebebeb;
 $dark-gray: #242424;
 // Overriding Bootstrap Variables
 $theme-colors: (
@@ -13,13 +13,11 @@ $theme-colors: (
 // Bootstrap
 @import "bootstrap";
 
-
-
 @import "./assets/scss/global.scss";
 @import "./assets/scss/carosel.scss";
 @import "./assets/scss/navBar.scss";
+@import "./assets/scss/footer.scss";
 
-// JUST FOR REFERENCE
 // Mobile
 @media (min-width: 320px) and (max-width: 425px) {
 }
@@ -39,4 +37,3 @@ $theme-colors: (
 // 4K
 @media (min-width: 1441px) and (max-width: 2560px) {
 }
-

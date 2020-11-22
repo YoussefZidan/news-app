@@ -1,11 +1,8 @@
 import React from "react";
 import { isMobile } from "../utility/commonFunctions";
-import { screenSizes } from "../utility/constants";
 import ListItemComponent from "./listItem";
 import { isTablet } from "./../utility/commonFunctions";
 const SideMenu = ({ toggle }) => {
-  const screenWidth = window.screen.width;
-
   const navItems = [
     {
       label: "Home",

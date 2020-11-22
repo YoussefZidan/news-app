@@ -7,20 +7,6 @@ const App = () => {
     <React.Fragment>
       <NavBar />
       <Routes />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </React.Fragment>
   );
 };
