@@ -1,6 +1,8 @@
 import React from "react";
+import { isMobile } from "../utility/commonFunctions";
 import { screenSizes } from "../utility/constants";
 import ListItemComponent from "./listItem";
+import { isTablet } from "./../utility/commonFunctions";
 const SideMenu = ({ toggle }) => {
   const screenWidth = window.screen.width;
 
@@ -34,12 +36,7 @@ const SideMenu = ({ toggle }) => {
     transitionDuration: ".5s",
     left: "-1000px",
     padding: "25px",
-    width:
-      screenWidth <= +screenSizes.mobile
-        ? "70vw"
-        : screenWidth <= +screenSizes.tablet
-        ? "50vw"
-        : "25vw",
+    width: isMobile() ? "70vw" : isTablet() ? "50vw" : "25vw",
   };
 
   const renderListItems = () => {

@@ -1,3 +1,5 @@
+import { screenSizes } from "./constants";
+
 /**
  *
  * @param key Local Storage Key
@@ -51,4 +53,25 @@ export const truncate = (text, num = 10) => {
 export const capitalize = (s) => {
   if (typeof s !== "string") return "";
   return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
+export const isMobile = () => {
+  const screenWidth = window.screen.width;
+  return screenWidth <= screenSizes.mobile;
+};
+export const isTablet = () => {
+  const screenWidth = window.screen.width;
+  return screenWidth <= screenSizes.tablet;
+};
+export const isLabTop = () => {
+  const screenWidth = window.screen.width;
+  return screenWidth <= screenSizes.labTop;
+};
+export const isLabTopLarge = () => {
+  const screenWidth = window.screen.width;
+  return screenWidth <= screenSizes.labTopLarge;
+};
+export const isHD = () => {
+  const screenWidth = window.screen.width;
+  return screenWidth <= screenSizes.HD;
 };
