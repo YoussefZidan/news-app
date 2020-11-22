@@ -13,10 +13,10 @@ $theme-colors: (
 // Bootstrap
 @import "bootstrap";
 
-@import "./assets/scss/global.scss";
 @import "./assets/scss/carosel.scss";
 @import "./assets/scss/navBar.scss";
 @import "./assets/scss/footer.scss";
+@import "./assets/scss/global.scss";
 
 // Mobile
 @media (min-width: 320px) and (max-width: 425px) {

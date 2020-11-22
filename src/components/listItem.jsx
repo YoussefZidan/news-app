@@ -7,7 +7,7 @@ const ListItemComponent = ({ navItem, clicked }) => {
       <NavLink to={navItem.to} activeClassName="nav-active">
         {/* Text */}
         <div className="navItem text-dark p-2 mb-2">
-          <div className="label pr-3 inactive">
+          <div className="label pr-3 inactive-link">
             <span>{navItem.label}</span>
           </div>
         </div>
