@@ -13,9 +13,8 @@ import {
 import * as Icon from "react-feather";
 
 const Footer = () => {
-  const footerStyles = {};
   return (
-    <div style={footerStyles} className="bg-light-gray p-5">
+    <div className="bg-light-gray p-5">
       <Container fluid className="p-lg-5">
         <Row>
           <Col lg={3} className="mb-3">
@@ -59,10 +58,22 @@ const Footer = () => {
           <Col lg={3} className="pl-5">
             <p>Follow Us On</p>
             <div>
-              <Icon.Instagram className="text-muted mr-3 mb-2 pointer" size={28} />
-              <Icon.Youtube className="text-muted mr-3 mb-2 pointer" size={28} />
-              <Icon.Linkedin className="text-muted mr-3 mb-2 pointer" size={28} />
-              <Icon.Facebook className="text-muted mr-3 mb-2 pointer" size={28} />
+              <Icon.Instagram
+                className="text-muted mr-3 mb-2 pointer"
+                size={28}
+              />
+              <Icon.Youtube
+                className="text-muted mr-3 mb-2 pointer"
+                size={28}
+              />
+              <Icon.Linkedin
+                className="text-muted mr-3 mb-2 pointer"
+                size={28}
+              />
+              <Icon.Facebook
+                className="text-muted mr-3 mb-2 pointer"
+                size={28}
+              />
               <Icon.Twitter className="text-muted" size={28} />
             </div>
           </Col>
