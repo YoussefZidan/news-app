@@ -74,7 +74,7 @@ const Footer = () => {
                 className="text-muted mr-3 mb-2 pointer"
                 size={28}
               />
-              <Icon.Twitter className="text-muted" size={28} />
+              <Icon.Twitter className="text-muted mb-2 pointer" size={28} />
             </div>
           </Col>
         </Row>

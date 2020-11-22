@@ -10,7 +10,6 @@ const Home = () => {
       <Carosel />
       <LatestNews />
       <Banner />
-      <Footer />
     </React.Fragment>
   );
 };
