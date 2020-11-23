@@ -20,7 +20,10 @@ const ThemeCard = ({
   cardBtn = null,
   publishedAt = null,
 }) => {
-  const cardStyle = { minHeight: "450px" };
+  const cardStyle = {
+    minHeight: "450px",
+    cursor: "pointer",
+  };
   const cardImgStyle = {
     height: "150px",
     backgroundImage: `url(${cardImg.src})`,
@@ -31,7 +34,7 @@ const ThemeCard = ({
     minHeight: "100px",
   };
   return (
-    <Card style={cardStyle}>
+    <Card style={cardStyle} className="mb-3">
       {cardImg && <div style={cardImgStyle}></div>}
       <CardBody>
         <div>

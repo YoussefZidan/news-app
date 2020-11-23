@@ -13,7 +13,9 @@ const Routes = () => {
       <Route path="/home" render={(props) => <Home {...props}></Home>} />
       <Route
         path="/blog"
-        render={(props) => <h1 className="text-center p-5 vh-100">Blog Page</h1>}
+        render={(props) => (
+          <h1 className="text-center p-5 vh-100">Blog Page</h1>
+        )}
       />
 
       <Redirect from="/" to="/home" />

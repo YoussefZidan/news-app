@@ -3,7 +3,12 @@ import { Col, Container, Row } from "reactstrap";
 import ThemeCard from "../shared/themeCard";
 import { articles } from "../../utility/newsapi";
 import { truncate } from "../../utility/commonFunctions";
+import { viewSingleNews } from "./../../redux/news/newsActions";
+import { useDispatch } from "react-redux";
+
 const LatestNews = () => {
+  const dispatch = useDispatch();
+
   return (
     <Container className="my-5">
       <h2 className="font-weight-bold display-4 mb-3">Latest News</h2>
@@ -11,7 +16,13 @@ const LatestNews = () => {
         {articles.map(
           (ele) =>
             ele.showOnHomepage && (
-              <Col lg={4} key={ele.id} className="mb-3">
+              <Col
+                lg={4}
+                key={ele.id}
+                className="mb-3"
+                onClick={() => {
+                  dispatch(viewSingleNews(ele));
+                }}>
                 <ThemeCard
                   cardSubTitle={truncate(ele.title, 40)}
                   cardImg={{ src: ele.urlToImage }}
