@@ -1,0 +1,1 @@
+export const VIEW_SINGLE_NEWS = "VIEW_SINGLE_NEWS";
