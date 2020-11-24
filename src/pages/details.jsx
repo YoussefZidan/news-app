@@ -15,6 +15,7 @@ import LatestNewsCard from "./../components/shared/latestNewsCard";
 import { randomNumber, toTop } from "./../utility/commonFunctions";
 import { useDispatch, useSelector } from "react-redux";
 import { viewSingleNews } from "./../redux/news/newsActions";
+import ThemeBreadCrumbs from "../components/shared/themeBreadCrumbs";
 
 const Details = ({ match }) => {
   const { news } = useSelector((state) => state);
@@ -46,35 +47,34 @@ const Details = ({ match }) => {
       img: "https://picsum.photos/600/600",
     },
   ];
-
+  const breadCrumbItems = [
+    {
+      label: "Home",
+      to: "/",
+      active: false,
+    },
+    {
+      label: "News",
+      to: "/",
+      active: false,
+    },
+    {
+      label: "News Details",
+      to: "/",
+      active: true,
+    },
+  ];
+  
   useEffect(() => {
-    toTop()
+    toTop();
     dispatch(viewSingleNews(+match.params.id));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [news.singleNews]);
 
   return (
     <Container className="pb-5">
       {/* Bread Crumbs */}
-      <div>
-        <Breadcrumb>
-          <BreadcrumbItem>
-            <NavLink to="/" className="text-muted">
-              Home
-            </NavLink>
-          </BreadcrumbItem>
-          <BreadcrumbItem>
-            <NavLink to="/" className="text-muted">
-              News
-            </NavLink>
-          </BreadcrumbItem>
-          <BreadcrumbItem>
-            <NavLink to="/" className="text-primary">
-              News Details
-            </NavLink>
-          </BreadcrumbItem>
-        </Breadcrumb>
-      </div>
+      <ThemeBreadCrumbs items={breadCrumbItems} />
       {/* News Details */}
       <h2 className="display-4 font-weight-bold mb-4">News Details</h2>
       {news.singleNews && (
