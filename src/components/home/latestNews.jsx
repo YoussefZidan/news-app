@@ -5,6 +5,7 @@ import { articles } from "../../utility/newsapi";
 import { truncate } from "../../utility/commonFunctions";
 import { viewSingleNews } from "./../../redux/news/newsActions";
 import { useDispatch } from "react-redux";
+import { history } from "./../../history";
 
 const LatestNews = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const LatestNews = () => {
                 key={ele.id}
                 className="mb-3"
                 onClick={() => {
+                  history.push(`/details/${ele.id}`);
                   dispatch(viewSingleNews(ele.id));
                 }}>
                 <ThemeCard

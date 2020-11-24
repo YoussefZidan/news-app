@@ -13,13 +13,15 @@ import {
 import { NavLink } from "react-router-dom";
 import LatestNewsCard from "./../components/shared/latestNewsCard";
 import { randomNumber } from "./../utility/commonFunctions";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { viewSingleNews } from "./../redux/news/newsActions";
 
-const Details = () => {
+const Details = ({ match }) => {
   const { news } = useSelector((state) => state);
+  const dispatch = useDispatch();
   const cardImgStyle = {
     height: "400px",
-    backgroundImage: `url(${news.singleNews.urlToImage})`,
+    backgroundImage: `url(${news?.singleNews?.urlToImage})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
   };
@@ -45,6 +47,11 @@ const Details = () => {
     },
   ];
 
+  useEffect(() => {
+    dispatch(viewSingleNews(+match.params.id));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [news.singleNews]);
+
   return (
     <Container className="pb-5">
       {/* Bread Crumbs */}
@@ -69,25 +76,27 @@ const Details = () => {
       </div>
       {/* News Details */}
       <h2 className="display-4 font-weight-bold mb-4">News Details</h2>
-      <Card>
-        {/* Card Img */}
-        <div style={cardImgStyle}></div>
-        <CardBody>
-          <CardSubtitle tag="h6" className="mt-2 mb-2 text-muted">
-            Category Name
-          </CardSubtitle>
-          <CardTitle tag="h2" className="font-weight-bold">
-            {news.singleNews.title}
-          </CardTitle>
-          <p className="text-muted mb-3">{news.singleNews.content}</p>
-        </CardBody>
-      </Card>
+      {news.singleNews && (
+        <Card>
+          {/* Card Img */}
+          <div style={cardImgStyle}></div>
+          <CardBody>
+            <CardSubtitle tag="h6" className="mt-2 mb-2 text-muted">
+              Category Name
+            </CardSubtitle>
+            <CardTitle tag="h2" className="font-weight-bold">
+              {news.singleNews.title}
+            </CardTitle>
+            <p className="text-muted mb-3">{news.singleNews.content}</p>
+          </CardBody>
+        </Card>
+      )}
 
       {/* Related Topics */}
       <h2 className="display-4 font-weight-bold mb-4 mt-5">Related Topics</h2>
       <Row>
         {relatedTopics.map((ele) => (
-          <Col lg={4}>
+          <Col lg={4} key={ele.id}>
             <LatestNewsCard
               subTitle={ele.subTitle}
               title={ele.title}

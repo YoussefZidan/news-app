@@ -7,7 +7,6 @@ const newsReducer = (state = INITIAL_STATE, action) => {
     case VIEW_SINGLE_NEWS: {
       return { ...state, singleNews: action.payload };
     }
-
     default: {
       return state;
     }
