@@ -55,6 +55,10 @@ export const capitalize = (s) => {
   return s.charAt(0).toUpperCase() + s.slice(1);
 };
 
+export const toTop = () => {
+  window.scrollTo(0, 0);
+};
+
 export const isMobile = () => {
   const screenWidth = window.screen.width;
   return screenWidth <= screenSizes.mobile;

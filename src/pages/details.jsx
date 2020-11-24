@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import LatestNewsCard from "./../components/shared/latestNewsCard";
-import { randomNumber } from "./../utility/commonFunctions";
+import { randomNumber, toTop } from "./../utility/commonFunctions";
 import { useDispatch, useSelector } from "react-redux";
 import { viewSingleNews } from "./../redux/news/newsActions";
 
@@ -48,6 +48,7 @@ const Details = ({ match }) => {
   ];
 
   useEffect(() => {
+    toTop()
     dispatch(viewSingleNews(+match.params.id));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [news.singleNews]);
