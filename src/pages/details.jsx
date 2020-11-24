@@ -4,12 +4,14 @@ import {
   BreadcrumbItem,
   Card,
   CardBody,
-  CardImg,
   CardSubtitle,
   CardTitle,
+  Col,
   Container,
+  Row,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
+import LatestNewsCard from "./../components/shared/latestNewsCard";
 
 const Details = () => {
   const { news } = useState((state) => state);
@@ -22,6 +24,7 @@ const Details = () => {
   };
   return (
     <Container className="pb-5">
+      {/* Bread Crumbs */}
       <div>
         <Breadcrumb>
           <BreadcrumbItem>
@@ -41,6 +44,7 @@ const Details = () => {
           </BreadcrumbItem>
         </Breadcrumb>
       </div>
+      {/* News Details */}
       <h2 className="display-4 font-weight-bold mb-4">News Details</h2>
       <Card>
         {/* Card Img */}
@@ -65,6 +69,15 @@ const Details = () => {
 
       {/* Related Topics */}
       <h2 className="display-4 font-weight-bold mb-4 mt-5">Related Topics</h2>
+      <Row>
+        <Col lg={4}>
+          <LatestNewsCard
+            subTitle="Category"
+            title="lorem Ibsum dolor."
+            btnLabel="View Details"
+          />
+        </Col>
+      </Row>
     </Container>
   );
 };
