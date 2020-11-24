@@ -5,10 +5,11 @@ const LatestNewsCard = ({ img, subTitle, title, btnLabel }) => {
   return (
     <div
       style={{
-        backgroundImage: `url(https://dummyimage.com/600x400/000/fff)`,
+        backgroundImage: `url(${img})`,
         height: "350px",
         position: "relative",
         padding: "30px",
+        borderRadius: ".3rem",
       }}>
       <div
         style={{

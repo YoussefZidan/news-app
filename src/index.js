@@ -3,17 +3,17 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App.jsx";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { history } from "./history";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
 ReactDOM.render(
-  <BrowserRouter history={history}>
-    <Provider store={store}>
+  <Provider store={store}>
+    <Router history={history}>
       <App />
-    </Provider>
-  </BrowserRouter>,
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );
 

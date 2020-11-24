@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import LatestNewsCard from "./../components/shared/latestNewsCard";
+import { randomNumber } from "./../utility/commonFunctions";
 
 const Details = () => {
   const { news } = useState((state) => state);
@@ -22,6 +23,27 @@ const Details = () => {
     backgroundSize: "cover",
     backgroundPosition: "center",
   };
+
+  const relatedTopics = [
+    {
+      id: randomNumber(),
+      title: "First Topic",
+      btnLabel: "View Details",
+      img: "https://picsum.photos/200/300",
+    },
+    {
+      id: randomNumber(),
+      title: "Second Topic",
+      btnLabel: "View Details",
+      img: "https://picsum.photos/200/300",
+    },
+    {
+      id: randomNumber(),
+      title: "Third Topic",
+      btnLabel: "View Details",
+      img: "https://picsum.photos/200/300",
+    },
+  ];
   return (
     <Container className="pb-5">
       {/* Bread Crumbs */}
@@ -70,13 +92,15 @@ const Details = () => {
       {/* Related Topics */}
       <h2 className="display-4 font-weight-bold mb-4 mt-5">Related Topics</h2>
       <Row>
-        <Col lg={4}>
-          <LatestNewsCard
-            subTitle="Category"
-            title="lorem Ibsum dolor."
-            btnLabel="View Details"
-          />
-        </Col>
+        {relatedTopics.map((ele) => (
+          <Col lg={4}>
+            <LatestNewsCard
+              subTitle={ele.subTitle}
+              title={ele.title}
+              btnLabel={ele.btnLabel}
+            />
+          </Col>
+        ))}
       </Row>
     </Container>
   );
