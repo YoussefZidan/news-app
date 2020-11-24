@@ -24,7 +24,7 @@ const Details = ({ match }) => {
     height: "400px",
     backgroundImage: `url(${news?.singleNews?.urlToImage})`,
     backgroundSize: "cover",
-    backgroundPosition: "center",
+    backgroundPosition: "center center",
   };
 
   const relatedTopics = [
@@ -64,7 +64,7 @@ const Details = ({ match }) => {
       active: true,
     },
   ];
-  
+
   useEffect(() => {
     toTop();
     dispatch(viewSingleNews(+match.params.id));
@@ -97,7 +97,7 @@ const Details = ({ match }) => {
       <h2 className="display-4 font-weight-bold mb-4 mt-5">Related Topics</h2>
       <Row>
         {relatedTopics.map((ele) => (
-          <Col lg={4} key={ele.id}>
+          <Col lg={4} key={ele.id} className="mb-3">
             <LatestNewsCard
               subTitle={ele.subTitle}
               title={ele.title}

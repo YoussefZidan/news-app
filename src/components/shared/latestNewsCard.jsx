@@ -1,9 +1,10 @@
 import React from "react";
 import * as Icon from "react-feather";
 
-const LatestNewsCard = ({ img, subTitle, title, btnLabel }) => {
+const LatestNewsCard = ({ img, subTitle, title, btnLabel, rest }) => {
   return (
     <div
+      {...rest}
       style={{
         backgroundImage: `url(${img})`,
         backgroundSize: "cover",
