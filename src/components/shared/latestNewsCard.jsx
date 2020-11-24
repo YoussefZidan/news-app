@@ -6,6 +6,8 @@ const LatestNewsCard = ({ img, subTitle, title, btnLabel }) => {
     <div
       style={{
         backgroundImage: `url(${img})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
         height: "350px",
         position: "relative",
         padding: "30px",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,13 +13,13 @@ import {
 import { NavLink } from "react-router-dom";
 import LatestNewsCard from "./../components/shared/latestNewsCard";
 import { randomNumber } from "./../utility/commonFunctions";
+import { useSelector } from "react-redux";
 
 const Details = () => {
-  const { news } = useState((state) => state);
-
+  const { news } = useSelector((state) => state);
   const cardImgStyle = {
     height: "400px",
-    backgroundImage: `url(https://dummyimage.com/600x400/000/fff)`,
+    backgroundImage: `url(${news.singleNews.urlToImage})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
   };
@@ -29,21 +29,22 @@ const Details = () => {
       id: randomNumber(),
       title: "First Topic",
       btnLabel: "View Details",
-      img: "https://picsum.photos/200/300",
+      img: "https://picsum.photos/600/600",
     },
     {
       id: randomNumber(),
       title: "Second Topic",
       btnLabel: "View Details",
-      img: "https://picsum.photos/200/300",
+      img: "https://picsum.photos/600/600",
     },
     {
       id: randomNumber(),
       title: "Third Topic",
       btnLabel: "View Details",
-      img: "https://picsum.photos/200/300",
+      img: "https://picsum.photos/600/600",
     },
   ];
+
   return (
     <Container className="pb-5">
       {/* Bread Crumbs */}
@@ -76,16 +77,9 @@ const Details = () => {
             Category Name
           </CardSubtitle>
           <CardTitle tag="h2" className="font-weight-bold">
-            Lorem ipsum dolor sit, amet consectetur adipisicing.
+            {news.singleNews.title}
           </CardTitle>
-          <p className="text-muted mb-3">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-            optio molestiae aliquam nihil sunt corporis, quam ipsam neque
-            corrupti officiis aut quod expedita quia vitae voluptate sapiente
-            itaque suscipit dignissimos culpa assumenda repellat adipisci?
-            Tempora debitis exercitationem eligendi dolor blanditiis sequi, esse
-            libero adipisci iusto officia nisi ratione magnam sapiente!
-          </p>
+          <p className="text-muted mb-3">{news.singleNews.content}</p>
         </CardBody>
       </Card>
 
@@ -98,6 +92,7 @@ const Details = () => {
               subTitle={ele.subTitle}
               title={ele.title}
               btnLabel={ele.btnLabel}
+              img={ele.img}
             />
           </Col>
         ))}
