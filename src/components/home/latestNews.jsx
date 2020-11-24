@@ -21,7 +21,7 @@ const LatestNews = () => {
                 key={ele.id}
                 className="mb-3"
                 onClick={() => {
-                  dispatch(viewSingleNews(ele));
+                  dispatch(viewSingleNews(ele.id));
                 }}>
                 <ThemeCard
                   cardSubTitle={truncate(ele.title, 40)}
