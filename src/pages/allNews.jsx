@@ -13,13 +13,13 @@ import {
   getCategories,
   searchArticle,
   viewSingleNews,
-} from "../../redux/news/newsActions";
-import ThemeBreadCrumbs from "./../shared/themeBreadCrumbs";
-import { history } from "./../../history";
-import ThemeCard from "./../shared/themeCard";
-import { truncate } from "../../utility/commonFunctions";
-import { getNews } from "./../../redux/news/newsActions";
-import ThemeFlatPicker from "./../shared/themeFlatPicker";
+} from "../redux/news/newsActions";
+import ThemeBreadCrumbs from "../components/shared/themeBreadCrumbs";
+import { history } from "../history";
+import ThemeCard from "../components/shared/themeCard";
+import { toTop, truncate } from "../utility/commonFunctions";
+import { getNews } from "../redux/news/newsActions";
+import ThemeFlatPicker from "../components/shared/themeFlatPicker";
 import Select from "react-select";
 import * as Icon from "react-feather";
 
@@ -45,6 +45,7 @@ const AllNews = () => {
   const [searchKey, setSearchKey] = useState(null);
 
   useEffect(() => {
+    toTop();
     dispatch(getNews());
     dispatch(getCategories());
     // eslint-disable-next-line react-hooks/exhaustive-deps

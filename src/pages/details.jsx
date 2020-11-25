@@ -26,26 +26,6 @@ const Details = ({ match }) => {
     backgroundPosition: "center center",
   };
 
-  const relatedTopics = [
-    {
-      id: randomNumber(),
-      title: "First Topic",
-      btnLabel: "View Details",
-      img: "https://picsum.photos/600/600",
-    },
-    {
-      id: randomNumber(),
-      title: "Second Topic",
-      btnLabel: "View Details",
-      img: "https://picsum.photos/600/600",
-    },
-    {
-      id: randomNumber(),
-      title: "Third Topic",
-      btnLabel: "View Details",
-      img: "https://picsum.photos/600/600",
-    },
-  ];
   const breadCrumbItems = [
     {
       label: "Home",
