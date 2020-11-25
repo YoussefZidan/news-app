@@ -14,7 +14,7 @@ const LatestNews = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getNews());
+    dispatch(getNews({ showOnHomepage: true }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -22,26 +22,23 @@ const LatestNews = () => {
     if (news.articles) {
       return (
         <Row className="mt-5">
-          {news.articles.map(
-            (ele) =>
-              ele.showOnHomepage && (
-                <Col
-                  lg={4}
-                  key={ele.id}
-                  className="mb-3"
-                  onClick={() => {
-                    history.push(`/details/${ele.id}`);
-                    dispatch(viewSingleNews(ele.id));
-                  }}>
-                  <ThemeCard
-                    cardSubTitle={truncate(ele.title, 40)}
-                    cardImg={{ src: ele.urlToImage }}
-                    cardText={ele.description}
-                    publishedAt={ele.publishedAt}
-                  />
-                </Col>
-              )
-          )}
+          {news.articles.map((ele) => (
+            <Col
+              lg={4}
+              key={ele.id}
+              className="mb-3"
+              onClick={() => {
+                history.push(`/details/${ele.id}`);
+                dispatch(viewSingleNews(ele.id));
+              }}>
+              <ThemeCard
+                cardSubTitle={truncate(ele.title, 40)}
+                cardImg={{ src: ele.urlToImage }}
+                cardText={ele.description}
+                publishedAt={ele.publishedAt}
+              />
+            </Col>
+          ))}
         </Row>
       );
     } else {

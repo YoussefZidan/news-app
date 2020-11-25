@@ -1,10 +1,11 @@
 import { GET_NEWS, VIEW_SINGLE_NEWS, GET_RELATED_TOPICS } from "./newsTypes";
 import { axiosInstance } from "./../../network/apis";
 
-export const getNews = () => async (dispatch) => {
+export const getNews = (params) => async (dispatch) => {
   try {
     const res = await axiosInstance.get(`/articles`, {
       handlerEnabled: true,
+      params,
     });
     dispatch({
       type: GET_NEWS,

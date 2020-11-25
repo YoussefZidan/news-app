@@ -49,17 +49,17 @@ const Details = ({ match }) => {
   const breadCrumbItems = [
     {
       label: "Home",
-      to: "/",
+      to: "/home",
       active: false,
     },
     {
       label: "News",
-      to: "/",
+      to: "/news",
       active: false,
     },
     {
       label: "News Details",
-      to: "/",
+      to: `/details/${match.params.id}`,
       active: true,
     },
   ];
@@ -128,7 +128,7 @@ const Details = ({ match }) => {
       return (
         <Row className="mt-5">
           {[...Array(3)].map((ele) => (
-            <Col lg={4} className="mb-4" key={randomNumber()} >
+            <Col lg={4} className="mb-4" key={randomNumber()}>
               <Card>
                 <CardHeader>
                   <Skeleton height={250} />

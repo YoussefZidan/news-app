@@ -8,7 +8,7 @@ const ThemeBreadCrumbs = ({ items }) => {
       {items.map((ele) => (
         <BreadcrumbItem key={ele.label}>
           <NavLink to={ele.to}>
-            <span className={ele.active ? "text-primary" : "text-muted"}>
+            <span className={ele.active ? "text-white badge badge-primary p-2" : "text-muted"}>
               {ele.label}
             </span>
           </NavLink>
