@@ -25,6 +25,7 @@ import { getNews } from "../redux/news/newsActions";
 import ThemeFlatPicker from "../components/shared/themeFlatPicker";
 import Select from "react-select";
 import * as Icon from "react-feather";
+import queryString from "query-string";
 
 const breadCrumbItems = [
   {
@@ -39,7 +40,7 @@ const breadCrumbItems = [
   },
 ];
 
-const AllNews = () => {
+const AllNews = ({ location }) => {
   const dispatch = useDispatch();
   const { news } = useSelector((state) => state);
   const [dateFrom, setDateFrom] = useState(new Date());
@@ -49,11 +50,10 @@ const AllNews = () => {
 
   useEffect(() => {
     toTop();
-    dispatch(getNews());
+    dispatch(getNews({ _page: queryString.parse(location.search)._page || 1 }));
     dispatch(getCategories());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   useEffect(() => {
     if (news.categories) {
       let cats = [];
@@ -151,6 +151,11 @@ const AllNews = () => {
     console.log(date);
     setDateTo(date);
   };
+
+  const handlePagination = (page) => {
+    history.push(`/news?_page=${page}`);
+    dispatch(getNews({ _page: page }));
+  };
   return (
     <Container>
       {/* Bread Crumbs */}
@@ -160,26 +165,44 @@ const AllNews = () => {
       {renderAllNews()}
       {/* Pagination */}
       <Pagination size="lg" aria-label="Page navigation example">
-        <PaginationItem>
-          <PaginationLink first href="#" />
+        <PaginationItem
+          disabled={+queryString.parse(location.search)._page === 1}>
+          <PaginationLink
+            previous
+            onClick={() => {
+              handlePagination(+queryString.parse(location.search)._page - 1);
+            }}
+          />
         </PaginationItem>
-        <PaginationItem>
-          <PaginationLink previous href="#" />
+        <PaginationItem
+          active={+queryString.parse(location.search)._page === 1}
+          onClick={() => {
+            handlePagination(1);
+          }}>
+          <PaginationLink>1</PaginationLink>
         </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
+        <PaginationItem
+          active={+queryString.parse(location.search)._page === 2}
+          onClick={() => {
+            handlePagination(2);
+          }}>
+          <PaginationLink>2</PaginationLink>
         </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">2</PaginationLink>
+        <PaginationItem
+          active={+queryString.parse(location.search)._page === 3}
+          onClick={() => {
+            handlePagination(3);
+          }}>
+          <PaginationLink>3</PaginationLink>
         </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink next href="#" />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink last href="#" />
+        <PaginationItem
+          disabled={+queryString.parse(location.search)._page === 3}>
+          <PaginationLink
+            next
+            onClick={() => {
+              handlePagination(+queryString.parse(location.search)._page + 1);
+            }}
+          />
         </PaginationItem>
       </Pagination>
     </Container>

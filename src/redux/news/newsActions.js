@@ -9,10 +9,14 @@ import { store } from "../store";
 
 export const getNews = (params) => async (dispatch) => {
   try {
-    const res = await axiosInstance.get(`/articles`, {
-      handlerEnabled: true,
-      params,
-    });
+    const res = await axiosInstance.get(
+      `/articles?_sort=publishedAt&_order=desc&_limit=9`,
+      {
+        handlerEnabled: true,
+        params,
+      }
+    );
+    console.log(res.data);
     dispatch({
       type: GET_NEWS,
       payload: res.data,
