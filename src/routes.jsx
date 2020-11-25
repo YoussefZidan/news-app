@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./pages/home";
 import Details from "./pages/details";
+import AllNews from "./components/home/allNews";
 
 const Routes = () => {
   return (
@@ -10,13 +11,8 @@ const Routes = () => {
         path="/details/:id"
         render={(props) => <Details {...props}></Details>}
       />
-      <Route path="/home" render={(props) => <Home {...props}></Home>} />
-      <Route
-        path="/blog"
-        render={(props) => (
-          <h1 className="text-center p-5 vh-100">Blog Page</h1>
-        )}
-      />
+      <Route path="/home" render={(props) => <Home {...props} />} />
+      <Route path="/news" render={(props) => <AllNews {...props} />} />
       <Redirect from="/" to="/home" />
     </Switch>
   );

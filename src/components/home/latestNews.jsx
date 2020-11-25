@@ -1,20 +1,13 @@
 import React, { useEffect } from "react";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  CardImg,
-  Col,
-  Container,
-  Row,
-} from "reactstrap";
+import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap";
 import ThemeCard from "../shared/themeCard";
 import { truncate } from "../../utility/commonFunctions";
 import { getNews, viewSingleNews } from "./../../redux/news/newsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { history } from "./../../history";
 import Skeleton from "react-loading-skeleton";
-import { randomNumber } from './../../utility/commonFunctions';
+import { randomNumber } from "./../../utility/commonFunctions";
+import * as Icon from "react-feather";
 
 const LatestNews = () => {
   const { news } = useSelector((state) => state);
@@ -73,7 +66,12 @@ const LatestNews = () => {
 
   return (
     <Container className="my-5">
-      <h2 className="font-weight-bold display-4 mb-3">Latest News</h2>
+      <div className="d-flex align-items-center">
+        <h2 className="font-weight-bold display-4 mb-3">Latest News</h2>
+        <h4 className="text-success ml-auto pointer">
+          View All <Icon.ArrowRight />
+        </h4>
+      </div>
       {renderNews()}
     </Container>
   );

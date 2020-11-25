@@ -9,8 +9,8 @@ const SideMenu = ({ toggle }) => {
       to: "/home",
     },
     {
-      label: "Blog",
-      to: "/blog",
+      label: "News",
+      to: "/news",
     },
   ];
 
