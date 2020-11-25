@@ -26,3 +26,7 @@ a {
 .breadcrumb-item + .breadcrumb-item::before {
   content: ">";
 }
+
+.pagination {
+  justify-content: center;
+}
