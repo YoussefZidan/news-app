@@ -1,4 +1,9 @@
-import { GET_NEWS, VIEW_SINGLE_NEWS, GET_RELATED_TOPICS } from "./newsTypes";
+import {
+  GET_NEWS,
+  VIEW_SINGLE_NEWS,
+  GET_RELATED_TOPICS,
+  GET_CATEGORIES,
+} from "./newsTypes";
 import { axiosInstance } from "./../../network/apis";
 
 export const getNews = (params) => async (dispatch) => {
@@ -37,6 +42,20 @@ export const getRelatedTopics = () => async (dispatch) => {
     });
     dispatch({
       type: GET_RELATED_TOPICS,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.error({ ...err });
+  }
+};
+
+export const getCategories = () => async (dispatch) => {
+  try {
+    const res = await axiosInstance.get(`/sourceCategory`, {
+      handlerEnabled: true,
+    });
+    dispatch({
+      type: GET_CATEGORIES,
       payload: res.data,
     });
   } catch (err) {

@@ -4,7 +4,7 @@ import "flatpickr/dist/themes/material_green.css";
 const ThemeFlatPicker = ({ date, setDate }) => {
   return (
     <Flatpickr
-      options={{ altInput: true, altFormat: "F j, Y", dateFormat: "Y-m-d" }}
+      options={{ altInput: true, altFormat: "M j, Y", dateFormat: "M j, Y" }}
       data-enable-time
       value={date}
       onChange={(date) => {

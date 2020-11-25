@@ -1,6 +1,16 @@
-import { GET_NEWS, GET_RELATED_TOPICS, VIEW_SINGLE_NEWS } from "./newsTypes";
+import {
+  GET_CATEGORIES,
+  GET_NEWS,
+  GET_RELATED_TOPICS,
+  VIEW_SINGLE_NEWS,
+} from "./newsTypes";
 
-const INITIAL_STATE = { singleNews: null, articles: null, relatedTopics: null };
+const INITIAL_STATE = {
+  singleNews: null,
+  articles: null,
+  relatedTopics: null,
+  categories: null,
+};
 
 const newsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -12,6 +22,9 @@ const newsReducer = (state = INITIAL_STATE, action) => {
     }
     case GET_RELATED_TOPICS: {
       return { ...state, relatedTopics: action.payload };
+    }
+    case GET_CATEGORIES: {
+      return { ...state, categories: action.payload };
     }
     default: {
       return state;
