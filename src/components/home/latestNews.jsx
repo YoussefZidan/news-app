@@ -68,7 +68,11 @@ const LatestNews = () => {
     <Container className="my-5">
       <div className="d-flex align-items-center">
         <h2 className="font-weight-bold display-4 mb-3">Latest News</h2>
-        <h4 className="text-success ml-auto pointer">
+        <h4
+          className="text-success ml-auto pointer"
+          onClick={() => {
+            history.push("/news");
+          }}>
           View All <Icon.ArrowRight />
         </h4>
       </div>
