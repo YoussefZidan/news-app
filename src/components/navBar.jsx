@@ -1,16 +1,18 @@
 import React from "react";
-import { Navbar, Nav, Badge } from "reactstrap";
+import { Navbar, Nav, Badge, Progress } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/imgs/logo.png";
 import avatar from "../assets/imgs/avatar.png";
 import { spaces } from "./../utility/constants";
 import * as Icon from "react-feather";
 import SideMenu from "./sideMenu";
+import { useSelector } from "react-redux";
 
 /**
  * NavBar Component
  */
 const NavBar = () => {
+  const { loaders } = useSelector((state) => state);
   const toggleSideMenu = () => {
     let sideMenuContainer = document.getElementById("sideMenuContainer");
     let sideMenuContent = document.getElementById("sideMenuContent");
@@ -84,6 +86,15 @@ const NavBar = () => {
             </NavLink>
           </Nav>
         </div>
+
+        {Boolean(loaders.totalRequestsArr.length) && (
+          <Progress
+            animated
+            color="success"
+            max={loaders.totalRequests}
+            value={loaders.loading}
+          />
+        )}
       </Navbar>
     </React.Fragment>
   );
