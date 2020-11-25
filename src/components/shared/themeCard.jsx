@@ -46,7 +46,7 @@ const ThemeCard = ({
           {cardTitle && <CardTitle tag="h5">{cardTitle}</CardTitle>}
           {/* Tags */}
           <h5 className="mb-3">
-            <Badge className="bg-light-gray">News</Badge>
+            <Badge className="bg-light-gray text-dark">News</Badge>
           </h5>
         </div>
         <div className="d-flex flex-column justify-content-around h-100">
