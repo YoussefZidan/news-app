@@ -14,6 +14,7 @@ import { getNews, viewSingleNews } from "./../../redux/news/newsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { history } from "./../../history";
 import Skeleton from "react-loading-skeleton";
+import { randomNumber } from './../../utility/commonFunctions';
 
 const LatestNews = () => {
   const { news } = useSelector((state) => state);
@@ -54,7 +55,7 @@ const LatestNews = () => {
       return (
         <Row className="mt-5">
           {[...Array(6)].map((ele) => (
-            <Col lg={4} className="mb-4">
+            <Col lg={4} className="mb-4" key={randomNumber()}>
               <Card>
                 <CardHeader>
                   <Skeleton height={250} />

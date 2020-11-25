@@ -222,5 +222,28 @@
       "publishedAt": "2020-09-13T20:45:01Z",
       "content": "FILE – In this July 27, 2020, file photo, a nurse prepares a shot as a study of a possible COVID-19 vaccine in Binghamton, N.Y. (AP Photo/Hans Pennink, File)\r\nOAN NewsroomUPDATED 1:45 PM PT Sunday, S… [+1124 chars]"
     }
+  ],
+  "relatedTopics": [
+    {
+      "id": "1",
+      "subTitle": "Category",
+      "title": "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "btnLabel": "View Details",
+      "img": "https://picsum.photos/600/600"
+    },
+    {
+      "id": "2",
+      "subTitle": "Category",
+      "title": "Lorem ipsum dolor sit amet, consectetur.",
+      "btnLabel": "View Details",
+      "img": "https://picsum.photos/600/600"
+    },
+    {
+      "id": "3",
+      "subTitle": "Category",
+      "title": "Lorem ipsum dolor sit amet, consectetur adipisicing consectetur amet.",
+      "btnLabel": "View Details",
+      "img": "https://picsum.photos/600/600"
+    }
   ]
 }

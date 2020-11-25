@@ -1,5 +1,6 @@
 import React from "react";
 import * as Icon from "react-feather";
+import { truncate } from "../../utility/commonFunctions";
 
 const LatestNewsCard = ({ img, subTitle, title, btnLabel, rest }) => {
   return (
@@ -17,7 +18,7 @@ const LatestNewsCard = ({ img, subTitle, title, btnLabel, rest }) => {
       <div
         style={{
           position: "absolute",
-          maxHeight: "150px",
+          height: "200px",
           padding: "20px",
           bottom: "10px",
           left: "10px",
@@ -26,8 +27,8 @@ const LatestNewsCard = ({ img, subTitle, title, btnLabel, rest }) => {
           backgroundColor: `rgba(255,255,255,.8)`,
         }}>
         <p>{subTitle}</p>
-        <h2 className="display-6 font-weight-bold">{title}</h2>
-        <p className="text-success pointer d-inline-block">
+        <h5 className="font-weight-bold">{truncate(title, 50)}</h5>
+        <p className="text-success pointer d-inline-block mt-3">
           {btnLabel} <Icon.ArrowRight />
         </p>
       </div>
