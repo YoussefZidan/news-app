@@ -9,7 +9,11 @@ import {
   InputGroupAddon,
   Row,
 } from "reactstrap";
-import { getCategories, viewSingleNews } from "../../redux/news/newsActions";
+import {
+  getCategories,
+  searchArticle,
+  viewSingleNews,
+} from "../../redux/news/newsActions";
 import ThemeBreadCrumbs from "./../shared/themeBreadCrumbs";
 import { history } from "./../../history";
 import ThemeCard from "./../shared/themeCard";
@@ -38,6 +42,7 @@ const AllNews = () => {
   const [dateFrom, setDateFrom] = useState(new Date());
   const [dateTo, setDateTo] = useState(new Date());
   const [categories, setCategories] = useState([]);
+  const [searchKey, setSearchKey] = useState(null);
 
   useEffect(() => {
     dispatch(getNews());
@@ -107,9 +112,18 @@ const AllNews = () => {
         <Col lg={3}>
           <h5 className="text-bold-500">Search</h5>
           <InputGroup>
-            <Input placeholder="Search Services..." />
+            <Input
+              placeholder="Search Services..."
+              onChange={(e) => {
+                setSearchKey(e.currentTarget.value);
+              }}
+            />
             <InputGroupAddon addonType="append">
-              <Button color="success">
+              <Button
+                color="success"
+                onClick={() => {
+                  dispatch(searchArticle(searchKey));
+                }}>
                 <Icon.Search size={16} />
               </Button>
             </InputGroupAddon>

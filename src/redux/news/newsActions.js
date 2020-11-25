@@ -5,6 +5,7 @@ import {
   GET_CATEGORIES,
 } from "./newsTypes";
 import { axiosInstance } from "./../../network/apis";
+import { store } from "../store";
 
 export const getNews = (params) => async (dispatch) => {
   try {
@@ -58,6 +59,28 @@ export const getCategories = () => async (dispatch) => {
       type: GET_CATEGORIES,
       payload: res.data,
     });
+  } catch (err) {
+    console.error({ ...err });
+  }
+};
+
+export const searchArticle = (key) => async (dispatch) => {
+  let filteredArticles;
+  try {
+    const res = await axiosInstance.get(`/articles`, {
+      handlerEnabled: true,
+    });
+    if (key.length) {
+      filteredArticles = res.data.filter((ele) =>
+        ele.title.toLowerCase().includes(key.toLowerCase())
+      );
+      dispatch({
+        type: GET_NEWS,
+        payload: filteredArticles,
+      });
+    } else {
+      store.dispatch(getNews());
+    }
   } catch (err) {
     console.error({ ...err });
   }
