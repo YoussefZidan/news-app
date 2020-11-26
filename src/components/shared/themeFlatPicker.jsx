@@ -1,7 +1,7 @@
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/material_green.css";
 
-const ThemeFlatPicker = ({ date, setDate }) => {
+const ThemeFlatPicker = ({ date, setDate, ...rest }) => {
   return (
     <Flatpickr
       placeholder="Select Date"
@@ -15,6 +15,7 @@ const ThemeFlatPicker = ({ date, setDate }) => {
       onChange={(date) => {
         setDate(date);
       }}
+      {...rest}
     />
   );
 };

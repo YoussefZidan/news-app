@@ -104,15 +104,31 @@ const AllNews = ({ location }) => {
     return (
       <Row className="align-items-end">
         <Col lg={2}>
-          <h5 className="text-bold-500">From</h5>
+          <h5 className="text-bold-500">
+            From{" "}
+            <small
+              className="text-success pointer"
+              onClick={() => {
+                setDateFrom(null);
+                setDateTo(null);
+              }}>
+              <small className="mx-1">Clear </small>{" "}
+              <Icon.RefreshCw size={12} />
+            </small>
+          </h5>
           <ThemeFlatPicker date={dateFrom} setDate={handleDateFrom} />
         </Col>
 
         <Col lg={2}>
+          <h5 className="text-bold-500">To</h5>
           {Boolean(dateFrom) && (
             <div>
-              <h5 className="text-bold-500">To</h5>
               <ThemeFlatPicker date={dateTo} setDate={handleDateTo} />
+            </div>
+          )}
+          {!Boolean(dateFrom) && (
+            <div>
+              <ThemeFlatPicker date={dateTo} disabled={true} />
             </div>
           )}
         </Col>
