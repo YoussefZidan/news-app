@@ -105,7 +105,7 @@ const AllNews = ({ location }) => {
   const renderFilter = () => {
     return (
       <Row className="align-items-end">
-        <Col lg={2}>
+        <Col lg={2} className="mb-3">
           <h5 className="text-bold-500">
             From{" "}
             <small
@@ -127,7 +127,7 @@ const AllNews = ({ location }) => {
           />
         </Col>
 
-        <Col lg={2}>
+        <Col lg={2} className="mb-3">
           <h5 className="text-bold-500">To</h5>
           {Boolean(dateFrom) && (
             <div>
@@ -147,7 +147,7 @@ const AllNews = ({ location }) => {
         </Col>
 
         {Boolean(categories.length) && (
-          <Col lg={3}>
+          <Col lg={3} className="mb-3">
             <h5 className="text-bold-500">Category</h5>
 
             <Select
@@ -159,7 +159,7 @@ const AllNews = ({ location }) => {
             />
           </Col>
         )}
-        <Col lg={3}>
+        <Col lg={3} className="mb-3">
           <h5 className="text-bold-500">Search</h5>
           <InputGroup>
             <Input
@@ -179,7 +179,7 @@ const AllNews = ({ location }) => {
             </InputGroupAddon>
           </InputGroup>
         </Col>
-        <Col lg={2}>
+        <Col lg={2} className="mb-3">
           <h5 className="text-success text-center pointer">
             <span className="mx-3">Sort By</span>
             <Icon.Repeat size={16} style={{ transform: "rotate(90deg)" }} />
