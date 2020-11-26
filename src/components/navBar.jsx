@@ -19,7 +19,7 @@ const NavBar = () => {
 
     if (sideMenuContainer.style.display === "block") {
       sideMenuContainer.style.display = "none";
-      sideMenuContent.style.left = "-1000px";
+      sideMenuContent.style.left = "-100vw";
     } else {
       sideMenuContainer.style.display = "block";
       sideMenuContent.style.left = "0";
