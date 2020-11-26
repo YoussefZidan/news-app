@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
+  Card,
+  CardBody,
+  CardHeader,
   Col,
   Container,
   Input,
@@ -21,7 +24,7 @@ import {
 import ThemeBreadCrumbs from "../components/shared/themeBreadCrumbs";
 import { history } from "../history";
 import ThemeCard from "../components/shared/themeCard";
-import { toTop, truncate } from "../utility/commonFunctions";
+import { randomNumber, toTop, truncate } from "../utility/commonFunctions";
 import { getNews } from "../redux/news/newsActions";
 import ThemeFlatPicker from "../components/shared/themeFlatPicker";
 import Select from "react-select";
@@ -29,6 +32,7 @@ import * as Icon from "react-feather";
 import queryString from "query-string";
 import { filterWithDate } from "./../redux/news/newsActions";
 import moment from "moment";
+import { Skeleton } from "react-loading-skeleton";
 
 const breadCrumbItems = [
   {
@@ -95,6 +99,23 @@ const AllNews = ({ location }) => {
                 cardText={ele.description}
                 publishedAt={ele.publishedAt}
               />
+            </Col>
+          ))}
+        </Row>
+      );
+    } else {
+      return (
+        <Row className="mt-5">
+          {[...Array(9)].map((ele) => (
+            <Col lg={4} className="mb-4" key={randomNumber()}>
+              <Card>
+                <CardHeader>
+                  <Skeleton height={250} />
+                </CardHeader>
+                <CardBody>
+                  <Skeleton count={3} />
+                </CardBody>
+              </Card>
             </Col>
           ))}
         </Row>
