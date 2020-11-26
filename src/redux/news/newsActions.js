@@ -109,14 +109,12 @@ export const filterWithCategory = (catId) => async (dispatch) => {
 
 export const filterWithDate = ({ from, to }) => async (dispatch) => {
   try {
-    let res;
-    if (from && to) {
-      res = await axiosInstance.get(`/articles?publishedAt=>${from}&&${to}<=`, {
+    const res = await axiosInstance.get(
+      `/articles?publishedAt_gte=${from}&publishedAt_lte${to}`,
+      {
         handlerEnabled: true,
-      });
-    } else {
-      store.dispatch(getNews({ _page: 1 }));
-    }
+      }
+    );
 
     dispatch({
       type: GET_NEWS,

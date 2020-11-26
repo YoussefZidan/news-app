@@ -27,6 +27,8 @@ import ThemeFlatPicker from "../components/shared/themeFlatPicker";
 import Select from "react-select";
 import * as Icon from "react-feather";
 import queryString from "query-string";
+import { filterWithDate } from "./../redux/news/newsActions";
+import moment from "moment";
 
 const breadCrumbItems = [
   {
@@ -111,19 +113,30 @@ const AllNews = ({ location }) => {
               onClick={() => {
                 setDateFrom(null);
                 setDateTo(null);
+                dispatch(getNews({ _page: 1 }));
               }}>
-              <small className="mx-1">Clear </small>{" "}
+              <small className="mx-1">Clear </small>
               <Icon.RefreshCw size={12} />
             </small>
           </h5>
-          <ThemeFlatPicker date={dateFrom} setDate={handleDateFrom} />
+          <ThemeFlatPicker
+            date={dateFrom}
+            setDate={(e) => {
+              handleDateFrom(e[0]);
+            }}
+          />
         </Col>
 
         <Col lg={2}>
           <h5 className="text-bold-500">To</h5>
           {Boolean(dateFrom) && (
             <div>
-              <ThemeFlatPicker date={dateTo} setDate={handleDateTo} />
+              <ThemeFlatPicker
+                date={dateTo}
+                setDate={(e) => {
+                  handleDateTo(e[0]);
+                }}
+              />
             </div>
           )}
           {!Boolean(dateFrom) && (
@@ -177,12 +190,20 @@ const AllNews = ({ location }) => {
   };
 
   const handleDateFrom = (date) => {
-    console.log(date);
     setDateFrom(date);
   };
   const handleDateTo = (date) => {
-    console.log(date);
     setDateTo(date);
+    console.log({
+      from: moment(dateFrom[0]).format(),
+      to: moment(dateTo[0]).format(),
+    });
+    dispatch(
+      filterWithDate({
+        from: moment(dateFrom).format(),
+        to: moment(dateTo).format(),
+      })
+    );
   };
 
   const handlePagination = (page) => {
