@@ -108,13 +108,12 @@ export const filterWithCategory = (catId) => async (dispatch) => {
 };
 
 export const filterWithDate = ({ from, to }) => async (dispatch) => {
+  const params = { publishedAt_gte: from, publishedAt_lte: to };
   try {
-    const res = await axiosInstance.get(
-      `/articles?publishedAt_gte=${from}&publishedAt_lte${to}`,
-      {
-        handlerEnabled: true,
-      }
-    );
+    const res = await axiosInstance.get(`/articles`, {
+      handlerEnabled: true,
+      params,
+    });
 
     dispatch({
       type: GET_NEWS,

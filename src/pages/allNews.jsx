@@ -195,8 +195,8 @@ const AllNews = ({ location }) => {
   const handleDateTo = (date) => {
     setDateTo(date);
     console.log({
-      from: moment(dateFrom[0]).format(),
-      to: moment(dateTo[0]).format(),
+      from: moment(dateFrom).format(),
+      to: moment(dateTo).format(),
     });
     dispatch(
       filterWithDate({
