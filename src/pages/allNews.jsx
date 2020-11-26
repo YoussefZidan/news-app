@@ -13,6 +13,7 @@ import {
   Row,
 } from "reactstrap";
 import {
+  filterWithCategory,
   getCategories,
   searchArticle,
   viewSingleNews,
@@ -48,9 +49,13 @@ const AllNews = ({ location }) => {
   const [categories, setCategories] = useState([]);
   const [searchKey, setSearchKey] = useState(null);
 
+  const getPageNum = () => {
+    return +queryString.parse(location.search)._page;
+  };
+
   useEffect(() => {
     toTop();
-    dispatch(getNews({ _page: queryString.parse(location.search)._page || 1 }));
+    dispatch(getNews({ _page: getPageNum() || 1 }));
     dispatch(getCategories());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -110,7 +115,13 @@ const AllNews = ({ location }) => {
           <Col lg={3}>
             <h5 className="text-bold-500">Category</h5>
 
-            <Select isClearable={true} options={categories} />
+            <Select
+              isClearable={true}
+              options={categories}
+              onChange={(e) => {
+                dispatch(filterWithCategory(e?.value || null));
+              }}
+            />
           </Col>
         )}
         <Col lg={3}>
@@ -164,43 +175,41 @@ const AllNews = ({ location }) => {
       {renderFilter()}
       {renderAllNews()}
       {/* Pagination */}
-      <Pagination size="lg" aria-label="Page navigation example">
-        <PaginationItem
-          disabled={+queryString.parse(location.search)._page === 1}>
+      <Pagination size="lg">
+        <PaginationItem disabled={getPageNum() === 1}>
           <PaginationLink
             previous
             onClick={() => {
-              handlePagination(+queryString.parse(location.search)._page - 1);
+              handlePagination(getPageNum() - 1);
             }}
           />
         </PaginationItem>
         <PaginationItem
-          active={+queryString.parse(location.search)._page === 1}
+          active={getPageNum() === 1 || isNaN(getPageNum())}
           onClick={() => {
             handlePagination(1);
           }}>
           <PaginationLink>1</PaginationLink>
         </PaginationItem>
         <PaginationItem
-          active={+queryString.parse(location.search)._page === 2}
+          active={getPageNum() === 2}
           onClick={() => {
             handlePagination(2);
           }}>
           <PaginationLink>2</PaginationLink>
         </PaginationItem>
         <PaginationItem
-          active={+queryString.parse(location.search)._page === 3}
+          active={getPageNum() === 3}
           onClick={() => {
             handlePagination(3);
           }}>
           <PaginationLink>3</PaginationLink>
         </PaginationItem>
-        <PaginationItem
-          disabled={+queryString.parse(location.search)._page === 3}>
+        <PaginationItem disabled={getPageNum() === 3}>
           <PaginationLink
             next
             onClick={() => {
-              handlePagination(+queryString.parse(location.search)._page + 1);
+              handlePagination(getPageNum() + 1);
             }}
           />
         </PaginationItem>

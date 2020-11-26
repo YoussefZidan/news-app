@@ -7,16 +7,13 @@ import {
 import { axiosInstance } from "./../../network/apis";
 import { store } from "../store";
 
-export const getNews = (params) => async (dispatch) => {
+export const getNews = (p) => async (dispatch) => {
+  let params = { ...p, _sort: "publishedAt", _order: "desc", _limit: 9 };
   try {
-    const res = await axiosInstance.get(
-      `/articles?_sort=publishedAt&_order=desc&_limit=9`,
-      {
-        handlerEnabled: true,
-        params,
-      }
-    );
-    console.log(res.data);
+    const res = await axiosInstance.get(`/articles`, {
+      handlerEnabled: true,
+      params,
+    });
     dispatch({
       type: GET_NEWS,
       payload: res.data,
@@ -85,6 +82,26 @@ export const searchArticle = (key) => async (dispatch) => {
     } else {
       store.dispatch(getNews());
     }
+  } catch (err) {
+    console.error({ ...err });
+  }
+};
+
+export const filterWithCategory = (catId) => async (dispatch) => {
+  try {
+    let res;
+    if (catId) {
+      res = await axiosInstance.get(`/articles?categoryId=${catId}`, {
+        handlerEnabled: true,
+      });
+    } else {
+      store.dispatch(getNews({ _page: 1 }));
+    }
+
+    dispatch({
+      type: GET_NEWS,
+      payload: res.data,
+    });
   } catch (err) {
     console.error({ ...err });
   }
