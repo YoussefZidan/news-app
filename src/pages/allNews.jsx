@@ -44,8 +44,8 @@ const breadCrumbItems = [
 const AllNews = ({ location }) => {
   const dispatch = useDispatch();
   const { news } = useSelector((state) => state);
-  const [dateFrom, setDateFrom] = useState(new Date());
-  const [dateTo, setDateTo] = useState(new Date());
+  const [dateFrom, setDateFrom] = useState(null);
+  const [dateTo, setDateTo] = useState(null);
   const [categories, setCategories] = useState([]);
   const [searchKey, setSearchKey] = useState(null);
 
@@ -107,10 +107,16 @@ const AllNews = ({ location }) => {
           <h5 className="text-bold-500">From</h5>
           <ThemeFlatPicker date={dateFrom} setDate={handleDateFrom} />
         </Col>
+
         <Col lg={2}>
-          <h5 className="text-bold-500">To</h5>
-          <ThemeFlatPicker date={dateTo} setDate={handleDateTo} />
+          {Boolean(dateFrom) && (
+            <div>
+              <h5 className="text-bold-500">To</h5>
+              <ThemeFlatPicker date={dateTo} setDate={handleDateTo} />
+            </div>
+          )}
         </Col>
+
         {Boolean(categories.length) && (
           <Col lg={3}>
             <h5 className="text-bold-500">Category</h5>

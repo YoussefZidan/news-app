@@ -106,3 +106,23 @@ export const filterWithCategory = (catId) => async (dispatch) => {
     console.error({ ...err });
   }
 };
+
+export const filterWithDate = ({ from, to }) => async (dispatch) => {
+  try {
+    let res;
+    if (from && to) {
+      res = await axiosInstance.get(`/articles?publishedAt=>${from}&&${to}<=`, {
+        handlerEnabled: true,
+      });
+    } else {
+      store.dispatch(getNews({ _page: 1 }));
+    }
+
+    dispatch({
+      type: GET_NEWS,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.error({ ...err });
+  }
+};
