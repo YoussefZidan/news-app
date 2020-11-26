@@ -10,11 +10,11 @@ import { history } from "./history";
 
 ReactDOM.render(
   <Provider store={store}>
-    <HashRouter basename="/">
-      <Router history={history}>
+    <Router history={history}>
+      <HashRouter basename="/">
         <App />
-      </Router>
-    </HashRouter>
+      </HashRouter>
+    </Router>
   </Provider>,
   document.getElementById("root")
 );
