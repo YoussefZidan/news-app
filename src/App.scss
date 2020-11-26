@@ -1,14 +1,18 @@
 // Variables
 $primary: #058997;
+$success: #8dc043;
 $dark: #111111;
 $light-gray: #d1d1d1;
 $dark-gray: #242424;
+$transparent-gray: rgba(0, 0, 0, 0.3);
 // Overriding Bootstrap Variables
 $theme-colors: (
   "primary": $primary,
+  "success": $success,
   "dark": $dark,
   "light-gray": $light-gray,
   "dark-gray": $dark-gray,
+  "transparent-gray": $transparent-gray,
 );
 // Bootstrap
 @import "bootstrap";

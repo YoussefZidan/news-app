@@ -1,5 +1,17 @@
-import React from "react";
-import { Navbar, Nav, Badge, Progress } from "reactstrap";
+import React, { useState } from "react";
+import {
+  Navbar,
+  Nav,
+  Badge,
+  Progress,
+  UncontrolledTooltip,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  NavItem,
+  Button,
+  InputGroupText,
+} from "reactstrap";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/imgs/logo.png";
 import avatar from "../assets/imgs/avatar.png";
@@ -12,6 +24,7 @@ import { useSelector } from "react-redux";
  * NavBar Component
  */
 const NavBar = () => {
+  const [showSearch, setShowSearch] = useState(false);
   const { loaders } = useSelector((state) => state);
   const toggleSideMenu = () => {
     let sideMenuContainer = document.getElementById("sideMenuContainer");
@@ -24,6 +37,10 @@ const NavBar = () => {
       sideMenuContainer.style.display = "block";
       sideMenuContent.style.left = "0";
     }
+  };
+
+  const toggleSearch = () => {
+    setShowSearch(!showSearch);
   };
 
   const style = {
@@ -55,22 +72,52 @@ const NavBar = () => {
             <img src={logo} alt="Logo" width="60vw" />
           </NavLink>
           <Nav className="ml-auto align-items-center" navbar>
-            <div className="mr-4">
+            <div className="mr-4 d-flex align-items-center">
               {/* Search */}
-              <NavLink to="/">
-                <Icon.Search className="text-white mr-3" size={30} />
-              </NavLink>
+              {!showSearch && (
+                <div
+                  className="icon-container p-2 badge mx-2 pointer"
+                  id="search"
+                  onClick={() => {
+                    toggleSearch();
+                  }}>
+                  <Icon.Search className="text-white" size={25} />
+                  <UncontrolledTooltip target="search" placement="bottom">
+                    Search
+                  </UncontrolledTooltip>
+                </div>
+              )}
+              {showSearch && (
+                <InputGroup>
+                  <Input />
+                  <InputGroupAddon addonType="append">
+                    <InputGroupText
+                      className="pointer"
+                      onClick={() => {
+                        toggleSearch();
+                      }}>
+                      <Icon.Search className="text-white" size={20} />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                </InputGroup>
+              )}
+
               {/* Notification */}
               <NavLink to="/" className="position-relative">
-                <Icon.Bell className="text-white mr-lg-3" size={30} />
+                <div
+                  className="icon-container p-2 badge mx-lg-2"
+                  id="notifications">
+                  <Icon.Bell className="text-white" size={25} />
+                </div>
                 <Badge
                   color="success"
                   pill
                   className="badge-up"
-                  style={badgeStyle}>
-                  {" "}
-                </Badge>
+                  style={badgeStyle}></Badge>
               </NavLink>
+              <UncontrolledTooltip target="notifications" placement="bottom">
+                Notifications
+              </UncontrolledTooltip>
             </div>
             {/* Avatar */}
             <div className="d-none d-sm-block">
@@ -82,8 +129,13 @@ const NavBar = () => {
 
             {/* Settings */}
             <NavLink to="/" className="d-none d-sm-block">
-              <Icon.Settings className="text-white" size={30} />
+              <div className="icon-container p-2 badge" id="settings">
+                <Icon.Settings className="text-white" size={30} />
+              </div>
             </NavLink>
+            <UncontrolledTooltip target="settings" placement="bottom">
+              Settings
+            </UncontrolledTooltip>
           </Nav>
         </div>
 
