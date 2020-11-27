@@ -9,3 +9,8 @@ export const screenSizes = {
   labTopLarge: 1440,
   HD: 2560,
 };
+
+export const iconIds = {
+  burger: 1,
+  close: 2,
+};

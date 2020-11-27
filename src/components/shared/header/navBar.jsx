@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Navbar,
   Nav,
@@ -16,55 +16,26 @@ import {
   DropdownItem,
   NavbarBrand,
 } from "reactstrap";
-import { NavLink } from "react-router-dom";
-import logo from "../assets/imgs/logo.png";
-import avatar from "../assets/imgs/avatar.png";
-import { spaces } from "./../utility/constants";
+import { iconIds, spaces } from "./../../../utility/constants";
 import * as Icon from "react-feather";
-import SideMenu from "./sideMenu";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import logo from "../../../assets/imgs/logo.png";
+import avatar from "../../../assets/imgs/avatar.png";
 
 /**
+ *
  * NavBar Component
  */
-const NavBar = () => {
-  const iconIds = {
-    burger: 1,
-    close: 2,
-  };
+const NavBar = ({ iconType, toggleSideMenu }) => {
   const { loaders } = useSelector((state) => state);
-  const [iconType, setIconType] = useState(iconIds.burger);
-  const toggleSideMenu = () => {
-    let sideMenuContainer = document.getElementById("sideMenuContainer");
-    let sideMenuContent = document.getElementById("sideMenuContent");
-
-    if (sideMenuContainer.style.display === "block") {
-      sideMenuContainer.style.display = "none";
-      sideMenuContent.style.left = "-100vw";
-      setIconType(iconIds.burger);
-    } else {
-      sideMenuContainer.style.display = "block";
-      sideMenuContent.style.left = "0";
-      setIconType(iconIds.close);
-    }
-  };
 
   const style = {
     height: spaces.navBarHeight,
   };
-  const badgeStyle = {
-    height: "10px",
-    width: "5px",
-    position: "absolute",
-    top: "5px",
-    left: "30px",
-  };
 
   return (
     <React.Fragment>
-      {/* Side Menu Component */}
-      <SideMenu toggle={toggleSideMenu} />
-
       {/* navbar height space gap */}
       <div style={style}></div>
 
@@ -123,8 +94,7 @@ const NavBar = () => {
                 <Badge
                   color="success"
                   pill
-                  className="badge-up notification-badge"
-                  style={badgeStyle}>
+                  className="badge-up notification-badge">
                   <span> </span>
                 </Badge>
               </div>

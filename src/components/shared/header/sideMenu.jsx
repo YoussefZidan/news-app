@@ -1,19 +1,24 @@
 import React from "react";
-import { isMobile } from "../utility/commonFunctions";
+import { isMobile } from "../../../utility/commonFunctions";
 import ListItemComponent from "./listItem";
-import { isTablet } from "./../utility/commonFunctions";
-const SideMenu = ({ toggle }) => {
-  const navItems = [
-    {
-      label: "Home",
-      to: "/home",
-    },
-    {
-      label: "News",
-      to: "/news",
-    },
-  ];
+import { isTablet } from "../../../utility/commonFunctions";
 
+const navItems = [
+  {
+    label: "Home",
+    to: "/home",
+  },
+  {
+    label: "News",
+    to: "/news",
+  },
+];
+
+/**
+ *
+ * SideMenu Component
+ */
+const SideMenu = ({ toggle }) => {
   const sideMenuContainerStyles = {
     display: "none",
     background: "rgba(0,0,0,0.3)",
