@@ -8,9 +8,8 @@ import {
   Input,
   InputGroup,
   InputGroupAddon,
-  NavItem,
-  Button,
   InputGroupText,
+  NavItem,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/imgs/logo.png";
@@ -24,7 +23,6 @@ import { useSelector } from "react-redux";
  * NavBar Component
  */
 const NavBar = () => {
-  const [showSearch, setShowSearch] = useState(false);
   const { loaders } = useSelector((state) => state);
   const toggleSideMenu = () => {
     let sideMenuContainer = document.getElementById("sideMenuContainer");
@@ -39,10 +37,6 @@ const NavBar = () => {
     }
   };
 
-  const toggleSearch = () => {
-    setShowSearch(!showSearch);
-  };
-
   const style = {
     height: spaces.navBarHeight,
   };
@@ -53,6 +47,7 @@ const NavBar = () => {
     top: "-5px",
     left: "15px",
   };
+
   return (
     <React.Fragment>
       {/* Side Menu */}
@@ -74,36 +69,17 @@ const NavBar = () => {
           <Nav className="ml-auto align-items-center" navbar>
             <div className="mr-4 d-flex align-items-center">
               {/* Search */}
-              {!showSearch && (
-                <div
-                  className="icon-container p-2 badge mx-2 pointer"
-                  id="search"
-                  onClick={() => {
-                    toggleSearch();
-                  }}>
-                  <Icon.Search className="text-white" size={25} />
-                  <UncontrolledTooltip target="search" placement="bottom">
-                    Search
-                  </UncontrolledTooltip>
-                </div>
-              )}
-              {showSearch && (
-                <InputGroup>
-                  <Input />
-                  <InputGroupAddon addonType="append">
-                    <InputGroupText
-                      className="pointer"
-                      onClick={() => {
-                        toggleSearch();
-                      }}>
-                      <Icon.Search className="text-white" size={20} />
-                    </InputGroupText>
-                  </InputGroupAddon>
-                </InputGroup>
-              )}
+              <InputGroup>
+                <Input className="bg-transparent-gray border-0 text-white" />
+                <InputGroupAddon addonType="append" className="m-0">
+                  <InputGroupText className="pointer bg-transparent-gray border-0 m-0">
+                    <Icon.Search className="text-white" size={20} />
+                  </InputGroupText>
+                </InputGroupAddon>
+              </InputGroup>
 
               {/* Notification */}
-              <NavLink to="/" className="position-relative">
+              <NavItem className="position-relative pointer">
                 <div
                   className="icon-container p-2 badge mx-lg-2"
                   id="notifications">
@@ -114,25 +90,25 @@ const NavBar = () => {
                   pill
                   className="badge-up"
                   style={badgeStyle}></Badge>
-              </NavLink>
+              </NavItem>
               <UncontrolledTooltip target="notifications" placement="bottom">
                 Notifications
               </UncontrolledTooltip>
             </div>
             {/* Avatar */}
             <div className="d-none d-sm-block">
-              <NavLink to="/" className="mr-4 d-flex align-items-center">
+              <NavItem className="mr-4 d-flex align-items-center pointer">
                 <img src={avatar} alt="User" width="40vw" />
                 <p className="my-0 ml-2 text-white ">User Name</p>
-              </NavLink>
+              </NavItem>
             </div>
 
             {/* Settings */}
-            <NavLink to="/" className="d-none d-sm-block">
+            <NavItem className="d-none d-sm-block pointer">
               <div className="icon-container p-2 badge" id="settings">
                 <Icon.Settings className="text-white" size={30} />
               </div>
-            </NavLink>
+            </NavItem>
             <UncontrolledTooltip target="settings" placement="bottom">
               Settings
             </UncontrolledTooltip>
