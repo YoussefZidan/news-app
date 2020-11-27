@@ -1,0 +1,15 @@
+.polygon {
+  height: 250px;
+  width: 250px;
+  border: 5px solid white;
+  transform: rotate(45deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: $success;
+  }
+  &-inner {
+    transform: rotate(-45deg);
+  }
+}

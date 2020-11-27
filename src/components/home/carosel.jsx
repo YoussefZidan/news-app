@@ -25,7 +25,7 @@ const items = [
           dolore molestias dicta quidem omnis cum aperiam asperiores animi
           corporis?
         </span>
-        <Button color="success">Donate Now</Button>
+        <Button color="success text-white">Donate Now</Button>
       </React.Fragment>
     ),
   },
@@ -41,7 +41,7 @@ const items = [
           dolore molestias dicta quidem omnis cum aperiam asperiores animi
           corporis?
         </span>
-        <Button color="success">Donate Now</Button>
+        <Button color="success text-white">Donate Now</Button>
       </React.Fragment>
     ),
   },
@@ -57,7 +57,7 @@ const items = [
           dolore molestias dicta quidem omnis cum aperiam asperiores animi
           corporis?
         </span>
-        <Button color="success">Donate Now</Button>
+        <Button color="success text-white">Donate Now</Button>
       </React.Fragment>
     ),
   },
