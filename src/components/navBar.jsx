@@ -28,7 +28,12 @@ import { useSelector } from "react-redux";
  * NavBar Component
  */
 const NavBar = () => {
+  const iconIds = {
+    burger: 1,
+    close: 2,
+  };
   const { loaders } = useSelector((state) => state);
+  const [iconType, setIconType] = useState(iconIds.burger);
   const toggleSideMenu = () => {
     let sideMenuContainer = document.getElementById("sideMenuContainer");
     let sideMenuContent = document.getElementById("sideMenuContent");
@@ -36,9 +41,11 @@ const NavBar = () => {
     if (sideMenuContainer.style.display === "block") {
       sideMenuContainer.style.display = "none";
       sideMenuContent.style.left = "-100vw";
+      setIconType(iconIds.burger);
     } else {
       sideMenuContainer.style.display = "block";
       sideMenuContent.style.left = "0";
+      setIconType(iconIds.close);
     }
   };
 
@@ -67,13 +74,24 @@ const NavBar = () => {
           {/* Toggle Icon and Brand */}
           <div>
             {/* Toggle Icon */}
-            <Icon.AlignLeft
-              className="text-white mr-3 pointer"
-              size={38}
-              onClick={() => {
-                toggleSideMenu();
-              }}
-            />
+            {iconType === iconIds.burger && (
+              <Icon.AlignLeft
+                className="text-white mr-3 pointer"
+                size={38}
+                onClick={() => {
+                  toggleSideMenu();
+                }}
+              />
+            )}
+            {iconType === iconIds.close && (
+              <Icon.X
+                className="text-white mr-3 pointer"
+                size={38}
+                onClick={() => {
+                  toggleSideMenu();
+                }}
+              />
+            )}
             {/* Logo */}
             <NavbarBrand className="pointer">
               <NavLink to="/">
