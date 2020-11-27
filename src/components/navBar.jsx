@@ -135,10 +135,23 @@ const NavBar = () => {
                   </UncontrolledTooltip>
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem header>Header</DropdownItem>
-                  <DropdownItem>Another Action</DropdownItem>
+                  <DropdownItem header>Language</DropdownItem>
+                  <DropdownItem>English</DropdownItem>
+                  <DropdownItem>العربية</DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>Another Action</DropdownItem>
+                  <DropdownItem header>Font Size</DropdownItem>
+                  <DropdownItem>
+                    <div className="d-flex align-items-center">
+                      <h2 className="mr-3">A</h2>
+                      <h4 className="text-success mr-3">A</h4>
+                      <h5>A</h5>
+                    </div>
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem header>Account</DropdownItem>
+                  <DropdownItem>
+                    <h5>Logout</h5>
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </NavItem>
