@@ -18,6 +18,7 @@ import { spaces } from "./../utility/constants";
 import * as Icon from "react-feather";
 import SideMenu from "./sideMenu";
 import { useSelector } from "react-redux";
+import { isMobile } from "./../utility/commonFunctions";
 
 /**
  * NavBar Component
@@ -69,17 +70,19 @@ const NavBar = () => {
           <Nav className="ml-auto align-items-center" navbar>
             <div className="mr-4 d-flex align-items-center">
               {/* Search */}
-              <InputGroup>
-                <Input className="bg-transparent-gray border-0 text-white" />
-                <InputGroupAddon addonType="append" className="m-0">
-                  <InputGroupText className="pointer bg-transparent-gray border-0 m-0">
-                    <Icon.Search className="text-white" size={20} />
-                  </InputGroupText>
-                </InputGroupAddon>
-              </InputGroup>
+              <NavItem>
+                <InputGroup>
+                  <Input className=" search-input bg-transparent-gray border-0 text-white" />
+                  <InputGroupAddon addonType="append" className="m-0">
+                    <InputGroupText className="pointer bg-transparent-gray border-0 m-0">
+                      <Icon.Search className="text-white" size={20} />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                </InputGroup>
+              </NavItem>
 
               {/* Notification */}
-              <NavItem className="position-relative pointer">
+              <NavItem className="position-relative pointer d-none d-md-block">
                 <div
                   className="icon-container p-2 badge mx-lg-2"
                   id="notifications">

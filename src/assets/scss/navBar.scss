@@ -44,3 +44,10 @@ li {
   top: 80px;
   width: 100%;
 }
+
+.search-input {
+  @media (min-width: 320px) and (max-width: 425px) {
+    width: 70px !important;
+  }
+  width: auto;
+}
