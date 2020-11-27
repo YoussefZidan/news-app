@@ -31,7 +31,7 @@ const SideMenu = ({ toggle }) => {
     zIndex: "1000",
     transition: "ease",
     transitionDuration: ".5s",
-    left: "-1000px",
+    left: "-100vw",
     padding: "25px",
     width: isMobile() ? "70vw" : isTablet() ? "50vw" : "25vw",
   };
@@ -41,7 +41,7 @@ const SideMenu = ({ toggle }) => {
       <ListItemComponent
         navItem={navItem}
         key={navItem.label}
-        clicked={toggle}
+        toggle={toggle}
       />
     ));
   };

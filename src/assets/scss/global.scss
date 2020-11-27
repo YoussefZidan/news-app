@@ -40,9 +40,3 @@ a {
 .bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
   border-bottom-color: $transparent-gray;
 }
-
-.icon-container {
-  &:hover {
-    background-color: $success;
-  }
-}
