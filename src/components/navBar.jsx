@@ -53,11 +53,11 @@ const NavBar = () => {
     height: spaces.navBarHeight,
   };
   const badgeStyle = {
-    height: "15px",
+    height: "10px",
     width: "5px",
     position: "absolute",
-    top: "0",
-    left: "25px",
+    top: "5px",
+    left: "30px",
   };
 
   return (
@@ -120,14 +120,15 @@ const NavBar = () => {
                 className="icon-container p-2 badge mx-lg-2"
                 id="notifications">
                 <Icon.Bell className="text-white" size={25} />
+                <Badge
+                  color="success"
+                  pill
+                  className="badge-up notification-badge"
+                  style={badgeStyle}>
+                  <span> </span>
+                </Badge>
               </div>
-              <Badge
-                color="success"
-                pill
-                className="badge-up"
-                style={badgeStyle}>
-                <span> </span>
-              </Badge>
+
               <UncontrolledTooltip target="notifications" placement="bottom">
                 Notifications
               </UncontrolledTooltip>

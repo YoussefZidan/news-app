@@ -18,5 +18,8 @@
 .icon-container {
   &:hover {
     background-color: $success;
+    .notification-badge {
+      background-color: white;
+    }
   }
 }
