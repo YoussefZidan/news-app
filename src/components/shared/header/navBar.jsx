@@ -21,6 +21,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import logo from "../../../assets/imgs/logo.png";
 import avatar from "../../../assets/imgs/avatar.png";
+import { truncate } from "../../../utility/commonFunctions";
 
 /**
  *
@@ -84,21 +85,45 @@ const NavBar = ({ iconType, toggleSideMenu }) => {
 
             {/* Notification */}
             <NavItem className="position-relative pointer d-none d-md-block">
-              <div
-                className="icon-container p-2 badge mx-lg-2"
-                id="notifications">
-                <Icon.Bell className="text-white" size={25} />
-                <Badge
-                  color="success"
-                  pill
-                  className="badge-up notification-badge">
-                  <span> </span>
-                </Badge>
-              </div>
-
-              <UncontrolledTooltip target="notifications" placement="bottom">
-                Notifications
-              </UncontrolledTooltip>
+              <UncontrolledDropdown>
+                <DropdownToggle tag="a" className="pointer">
+                  <div
+                    className="icon-container p-2 badge mx-lg-2"
+                    id="notifications">
+                    <Icon.Bell className="text-white" size={25} />
+                    <Badge
+                      color="success"
+                      pill
+                      className="badge-up notification-badge">
+                      <span> </span>
+                    </Badge>
+                    <UncontrolledTooltip
+                      target="notifications"
+                      placement="bottom">
+                      Notifications
+                    </UncontrolledTooltip>
+                  </div>
+                </DropdownToggle>
+                <DropdownMenu style={{ minWidth: 200 }}>
+                  <DropdownItem header>Resent Notifications</DropdownItem>
+                  <DropdownItem tag="span">
+                    {truncate(
+                      "Lorem ipsum dolor sit amet consectetur adipisicing elit Quas, laboriosam",
+                      30
+                    )}
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem tag="span">
+                    {truncate("Lorem ipsum dolor sit", 30)}
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem tag="span">
+                    <span className="text-success">
+                      All Notifications <Icon.ArrowRight />
+                    </span>
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </NavItem>
 
             {/* Avatar */}
@@ -126,10 +151,10 @@ const NavBar = ({ iconType, toggleSideMenu }) => {
                   <DropdownItem>العربية</DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem header>Font Size</DropdownItem>
-                  <DropdownItem>
-                    <div className="d-flex align-items-center">
-                      <h2 className="mr-3">A</h2>
-                      <h4 className="text-success mr-3">A</h4>
+                  <DropdownItem tag="span">
+                    <div className="d-flex align-items-center pointer">
+                      <h2 className="mr-3 pointer">A</h2>
+                      <h4 className="text-success mr-3 pointer">A</h4>
                       <h5>A</h5>
                     </div>
                   </DropdownItem>

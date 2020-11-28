@@ -43,7 +43,7 @@ export const randomNumber = (min = 1, max = 1000) => {
   return Math.ceil(min + Math.random() * (max - min));
 };
 
-export const truncate = (text, num = 10) => {
+export const truncate = (text, num = 10, more = false) => {
   if (text.length > num) {
     return text.substring(0, num - 3) + "...";
   }
