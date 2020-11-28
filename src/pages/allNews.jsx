@@ -205,7 +205,7 @@ const AllNews = ({ location }) => {
           <h5
             className="text-success text-center pointer"
             onClick={() => {
-              dispatch(getNews({ _page_: getPageNum(), _order: orderBy }));
+              dispatch(getNews({ _page_: getPageNum() || 1, _order: orderBy === "asc" ? "desc" : "asc" }));
               setOrderBy(orderBy === "asc" ? "desc" : "asc");
             }}>
             <span className="mx-3">Sort By</span>
