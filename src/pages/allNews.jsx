@@ -32,7 +32,7 @@ import * as Icon from "react-feather";
 import queryString from "query-string";
 import { filterWithDate } from "./../redux/news/newsActions";
 import moment from "moment";
-import { Skeleton } from "react-loading-skeleton";
+import Skeleton from "react-loading-skeleton";
 
 const breadCrumbItems = [
   {
