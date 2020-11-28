@@ -8,12 +8,74 @@ import { axiosInstance } from "./../../network/apis";
 import { store } from "../store";
 
 export const getNews = (p) => async (dispatch) => {
-  let params = { ...p, _sort: "publishedAt", _order: "desc", _limit: 9 };
+  let params = {
+    ...p,
+    _sort: p._sort || "publishedAt",
+    _order: p._order || "desc",
+    _limit: p._limit || 9,
+  };
   try {
     const res = await axiosInstance.get(`/articles`, {
       handlerEnabled: true,
       params,
     });
+    dispatch({
+      type: GET_NEWS,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.error({ ...err });
+  }
+};
+
+export const filterWithDate = ({ from, to }) => async (dispatch) => {
+  const params = { publishedAt_gte: from, publishedAt_lte: to };
+  try {
+    const res = await axiosInstance.get(`/articles`, {
+      handlerEnabled: true,
+      params,
+    });
+
+    dispatch({
+      type: GET_NEWS,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.error({ ...err });
+  }
+};
+export const searchArticle = (key) => async (dispatch) => {
+  let filteredArticles;
+  try {
+    const res = await axiosInstance.get(`/articles`, {
+      handlerEnabled: true,
+    });
+    if (key.length) {
+      filteredArticles = res.data.filter((ele) =>
+        ele.title.toLowerCase().includes(key.toLowerCase())
+      );
+      dispatch({
+        type: GET_NEWS,
+        payload: filteredArticles,
+      });
+    } else {
+      store.dispatch(getNews());
+    }
+  } catch (err) {
+    console.error({ ...err });
+  }
+};
+export const filterWithCategory = (catId) => async (dispatch) => {
+  try {
+    let res;
+    if (catId) {
+      res = await axiosInstance.get(`/articles?categoryId=${catId}`, {
+        handlerEnabled: true,
+      });
+    } else {
+      store.dispatch(getNews({ _page: 1 }));
+    }
+
     dispatch({
       type: GET_NEWS,
       payload: res.data,
@@ -58,65 +120,6 @@ export const getCategories = () => async (dispatch) => {
     });
     dispatch({
       type: GET_CATEGORIES,
-      payload: res.data,
-    });
-  } catch (err) {
-    console.error({ ...err });
-  }
-};
-
-export const searchArticle = (key) => async (dispatch) => {
-  let filteredArticles;
-  try {
-    const res = await axiosInstance.get(`/articles`, {
-      handlerEnabled: true,
-    });
-    if (key.length) {
-      filteredArticles = res.data.filter((ele) =>
-        ele.title.toLowerCase().includes(key.toLowerCase())
-      );
-      dispatch({
-        type: GET_NEWS,
-        payload: filteredArticles,
-      });
-    } else {
-      store.dispatch(getNews());
-    }
-  } catch (err) {
-    console.error({ ...err });
-  }
-};
-
-export const filterWithCategory = (catId) => async (dispatch) => {
-  try {
-    let res;
-    if (catId) {
-      res = await axiosInstance.get(`/articles?categoryId=${catId}`, {
-        handlerEnabled: true,
-      });
-    } else {
-      store.dispatch(getNews({ _page: 1 }));
-    }
-
-    dispatch({
-      type: GET_NEWS,
-      payload: res.data,
-    });
-  } catch (err) {
-    console.error({ ...err });
-  }
-};
-
-export const filterWithDate = ({ from, to }) => async (dispatch) => {
-  const params = { publishedAt_gte: from, publishedAt_lte: to };
-  try {
-    const res = await axiosInstance.get(`/articles`, {
-      handlerEnabled: true,
-      params,
-    });
-
-    dispatch({
-      type: GET_NEWS,
       payload: res.data,
     });
   } catch (err) {

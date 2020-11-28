@@ -14,7 +14,6 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarBrand,
 } from "reactstrap";
 import { iconIds, spaces } from "./../../../utility/constants";
 import * as Icon from "react-feather";
@@ -64,11 +63,9 @@ const NavBar = ({ iconType, toggleSideMenu }) => {
               />
             )}
             {/* Logo */}
-            <NavbarBrand className="pointer">
-              <NavLink to="/">
-                <img src={logo} alt="Logo" width="60vw" />
-              </NavLink>
-            </NavbarBrand>
+            <NavLink to="/" className="pointer">
+              <img src={logo} alt="Logo" width="60vw" />
+            </NavLink>
           </div>
 
           {/* UL */}

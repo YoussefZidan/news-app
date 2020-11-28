@@ -54,6 +54,7 @@ const AllNews = ({ location }) => {
   const [dateTo, setDateTo] = useState(null);
   const [categories, setCategories] = useState([]);
   const [searchKey, setSearchKey] = useState(null);
+  const [orderBy, setOrderBy] = useState("asc");
 
   const getPageNum = () => {
     return +queryString.parse(location.search)._page;
@@ -134,7 +135,7 @@ const AllNews = ({ location }) => {
               onClick={() => {
                 setDateFrom(null);
                 setDateTo(null);
-                dispatch(getNews({ _page: 1 }));
+                dispatch(getNews({ _page: 1, _order: orderBy }));
               }}>
               <small className="mx-1">Clear </small>
               <Icon.RefreshCw size={12} />
@@ -201,7 +202,12 @@ const AllNews = ({ location }) => {
           </InputGroup>
         </Col>
         <Col lg={2} className="mb-3">
-          <h5 className="text-success text-center pointer">
+          <h5
+            className="text-success text-center pointer"
+            onClick={() => {
+              dispatch(getNews({ _page_: getPageNum(), _order: orderBy }));
+              setOrderBy(orderBy === "asc" ? "desc" : "asc");
+            }}>
             <span className="mx-3">Sort By</span>
             <Icon.Repeat size={16} style={{ transform: "rotate(90deg)" }} />
           </h5>
@@ -228,57 +234,62 @@ const AllNews = ({ location }) => {
   };
 
   const handlePagination = (page) => {
+    console.log(orderBy);
     history.push(`/news?_page=${page}`);
-    dispatch(getNews({ _page: page }));
+    dispatch(getNews({ _page: page, _order: orderBy }));
   };
+
   return (
-    <Container>
-      {/* Bread Crumbs */}
-      <ThemeBreadCrumbs items={breadCrumbItems} />
-      {/* Filters */}
-      {renderFilter()}
-      {renderAllNews()}
-      {/* Pagination */}
-      <Pagination size="lg">
-        <PaginationItem disabled={getPageNum() === 1}>
-          <PaginationLink
-            previous
+    <React.Fragment>
+      <Container>
+        {/* Bread Crumbs */}
+        <ThemeBreadCrumbs items={breadCrumbItems} />
+        {/* Filters */}
+        {renderFilter()}
+        {/* News */}
+        {renderAllNews()}
+        {/* Pagination */}
+        <Pagination size="lg">
+          <PaginationItem disabled={getPageNum() === 1}>
+            <PaginationLink
+              previous
+              onClick={() => {
+                handlePagination(getPageNum() - 1);
+              }}
+            />
+          </PaginationItem>
+          <PaginationItem
+            active={getPageNum() === 1 || isNaN(getPageNum())}
             onClick={() => {
-              handlePagination(getPageNum() - 1);
-            }}
-          />
-        </PaginationItem>
-        <PaginationItem
-          active={getPageNum() === 1 || isNaN(getPageNum())}
-          onClick={() => {
-            handlePagination(1);
-          }}>
-          <PaginationLink>1</PaginationLink>
-        </PaginationItem>
-        <PaginationItem
-          active={getPageNum() === 2}
-          onClick={() => {
-            handlePagination(2);
-          }}>
-          <PaginationLink>2</PaginationLink>
-        </PaginationItem>
-        <PaginationItem
-          active={getPageNum() === 3}
-          onClick={() => {
-            handlePagination(3);
-          }}>
-          <PaginationLink>3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem disabled={getPageNum() === 3}>
-          <PaginationLink
-            next
+              handlePagination(1);
+            }}>
+            <PaginationLink>1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem
+            active={getPageNum() === 2}
             onClick={() => {
-              handlePagination(getPageNum() + 1);
-            }}
-          />
-        </PaginationItem>
-      </Pagination>
-    </Container>
+              handlePagination(2);
+            }}>
+            <PaginationLink>2</PaginationLink>
+          </PaginationItem>
+          <PaginationItem
+            active={getPageNum() === 3}
+            onClick={() => {
+              handlePagination(3);
+            }}>
+            <PaginationLink>3</PaginationLink>
+          </PaginationItem>
+          <PaginationItem disabled={getPageNum() === 3}>
+            <PaginationLink
+              next
+              onClick={() => {
+                handlePagination(getPageNum() + 1);
+              }}
+            />
+          </PaginationItem>
+        </Pagination>
+      </Container>
+    </React.Fragment>
   );
 };
 
