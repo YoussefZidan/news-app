@@ -17,7 +17,7 @@ const Footer = () => {
     <div className="bg-light-gray p-5">
       <Container fluid className="p-lg-5">
         <Row>
-          <Col lg={3} className="mb-3">
+          <Col lg={3} md={6} className="mb-3">
             <Nav vertical>
               <NavItem>
                 <p className="pointer">News</p>
@@ -33,7 +33,7 @@ const Footer = () => {
               </NavItem>
             </Nav>
           </Col>
-          <Col lg={3} className="mb-3">
+          <Col lg={3} md={6} className="mb-3">
             <Nav vertical>
               <NavItem>
                 <p className="pointer">Privacy Policy</p>
@@ -46,7 +46,7 @@ const Footer = () => {
               </NavItem>
             </Nav>
           </Col>
-          <Col lg={3} className="mb-3">
+          <Col lg={3} md={6} className="mb-3">
             <p>Subscribe to Newsletter</p>
             <InputGroup>
               <Input placeholder="Email Address..." />
@@ -55,7 +55,7 @@ const Footer = () => {
               </InputGroupAddon>
             </InputGroup>
           </Col>
-          <Col lg={3} className="pl-5">
+          <Col lg={3} md={6}>
             <p>Follow Us On</p>
             <div>
               <Icon.Instagram
