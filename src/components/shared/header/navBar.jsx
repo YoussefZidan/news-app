@@ -138,7 +138,7 @@ const NavBar = ({ iconType, toggleSideMenu }) => {
             {/* Settings */}
             <NavItem>
               <UncontrolledDropdown>
-                <DropdownToggle tag="a" className="pointer">
+                <DropdownToggle tag="a" className="pointer d-none d-lg-block">
                   <div className="icon-container p-2 badge" id="settings">
                     <Icon.Settings className="text-white" size={30} />
                   </div>
