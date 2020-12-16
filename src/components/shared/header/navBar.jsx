@@ -43,7 +43,7 @@ const NavBar = ({ iconType, toggleSideMenu }) => {
       <Navbar style={style} color="primary" expand="md" className="fixed-top">
         <div className="container">
           {/* Toggle Icon and Brand */}
-          <div>
+          <div className="d-flex align-items-center">
             {/* Toggle Icon */}
             {iconType === iconIds.burger && (
               <Icon.AlignLeft
@@ -65,7 +65,8 @@ const NavBar = ({ iconType, toggleSideMenu }) => {
             )}
             {/* Logo */}
             <NavLink to="/" className="pointer">
-              <img src={logo} alt="Logo" width="60vw" />
+              <h3 className="m-0 text-white d-inline font-weight-bold">LOGO</h3>
+              {/* <img src={logo} alt="Logo" width="60vw" /> */}
             </NavLink>
           </div>
 
