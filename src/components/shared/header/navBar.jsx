@@ -19,7 +19,7 @@ import { iconIds, spaces } from "./../../../utility/constants";
 import * as Icon from "react-feather";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import logo from "../../../assets/imgs/logo.png";
+// import logo from "../../../assets/imgs/logo.png";
 import avatar from "../../../assets/imgs/avatar.png";
 import { truncate } from "../../../utility/commonFunctions";
 
