@@ -2,8 +2,9 @@ import axios from "axios";
 import { requestHandler, successHandler, errorHandler } from "./interceptors";
 
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:3200",
+  baseURL: process.env.REACT_APP_BASE_URL,
 });
+console.log(process.env.REACT_APP_BASE_URL);
 
 // Handle request process
 axiosInstance.interceptors.request.use((request) => requestHandler(request));
